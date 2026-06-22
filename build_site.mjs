@@ -319,9 +319,9 @@ const html = `<!doctype html>
     }
 
     .panel, .card, .repo-card, .chapter-card, .source-panel {
-      background: var(--panel);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(12, 16, 29, 0.76), rgba(12, 16, 29, 0.62));
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       box-shadow: var(--shadow);
       border-radius: 26px;
     }
@@ -376,7 +376,7 @@ const html = `<!doctype html>
     .hero-copy {
       margin-top: 20px;
       max-width: 64ch;
-      color: rgba(245, 241, 232, 0.84);
+      color: rgba(245, 241, 232, 0.86);
       font-size: 1.04rem;
       line-height: 1.8;
     }
@@ -391,8 +391,8 @@ const html = `<!doctype html>
     .pill {
       padding: 10px 14px;
       border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.05);
       color: var(--text);
       font-size: 13px;
       font-weight: 700;
@@ -464,8 +464,8 @@ const html = `<!doctype html>
       border-radius: 22px;
       overflow: hidden;
       position: relative;
-      border: 1px solid var(--line);
-      background: var(--panel-solid);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(10, 12, 20, 0.72);
     }
 
     .portrait img {
@@ -534,7 +534,7 @@ const html = `<!doctype html>
     .profile-summary {
       font-size: 1.02rem;
       line-height: 1.8;
-      color: #3d342b;
+      color: rgba(245, 241, 232, 0.85);
       margin: 0;
     }
 
@@ -547,8 +547,8 @@ const html = `<!doctype html>
 
     .stat {
       padding: 14px 16px;
-      background: rgba(255,255,255,0.72);
-      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
       border-radius: 18px;
     }
 
@@ -590,7 +590,7 @@ const html = `<!doctype html>
       padding: 10px 12px;
       border-radius: 14px;
       text-decoration: none;
-      background: rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.06);
       border: 1px solid transparent;
       color: var(--text);
       font-size: 14px;
@@ -631,12 +631,12 @@ const html = `<!doctype html>
     }
 
     .chip {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.74);
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
       border-radius: 999px;
       padding: 10px 14px;
       font-weight: 700;
-      color: #43382c;
+      color: var(--text);
     }
 
     .repo-grid {
@@ -699,7 +699,7 @@ const html = `<!doctype html>
     }
 
     .chapter-summary:hover {
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255, 255, 255, 0.04);
     }
 
     .chapter-summary h3 {
@@ -710,11 +710,11 @@ const html = `<!doctype html>
     .chapter-summary-state {
       padding: 10px 14px;
       border-radius: 999px;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       color: var(--text);
       font-size: 13px;
       font-weight: 800;
-      background: rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.05);
       white-space: nowrap;
     }
 
@@ -788,7 +788,7 @@ const html = `<!doctype html>
     .index-actions button,
     .chapter-jump {
       appearance: none;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       background: rgba(255, 255, 255, 0.06);
       color: var(--text);
       border-radius: 14px;
