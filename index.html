@@ -1,0 +1,1162 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portafolio de Diego Ignacio Espinoza Núñez con perfil, intereses, fotos y proyectos de GitHub." />
+  <title>Diego Ignacio Espinoza Núñez | Portafolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe6;
+      --panel: rgba(255, 251, 244, 0.88);
+      --panel-solid: #fffaf2;
+      --text: #1d1813;
+      --muted: #6d6258;
+      --accent: #a4512a;
+      --accent-2: #264653;
+      --accent-soft: #f0d9ca;
+      --line: rgba(58, 42, 25, 0.12);
+      --shadow: 0 28px 90px rgba(42, 27, 11, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Manrope", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(164, 81, 42, 0.15), transparent 30%),
+        radial-gradient(circle at 80% 10%, rgba(38, 70, 83, 0.10), transparent 24%),
+        linear-gradient(180deg, #fffdf8 0%, var(--bg) 100%);
+    }
+
+    a { color: inherit; }
+
+    .shell {
+      width: min(1400px, calc(100% - 28px));
+      margin: 18px auto 44px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .panel, .card, .repo-card, .chapter-card, .source-panel {
+      background: var(--panel);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      border-radius: 26px;
+    }
+
+    .hero-main {
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-main::before {
+      content: "";
+      position: absolute;
+      inset: auto -5% -20% auto;
+      width: 340px;
+      height: 340px;
+      background: radial-gradient(circle, rgba(164, 81, 42, 0.18), transparent 68%);
+      pointer-events: none;
+    }
+
+    .eyebrow, .section-kicker, .chapter-kicker, .repo-lang, .mini-label {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    h1, h2, h3 {
+      font-family: "Cormorant Garamond", serif;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 6vw, 5.8rem);
+      max-width: 11ch;
+      margin-top: 10px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 3.2vw, 3.2rem);
+      margin-bottom: 12px;
+    }
+
+    h3 {
+      font-size: 1.9rem;
+      margin-bottom: 8px;
+    }
+
+    .hero-copy {
+      margin-top: 20px;
+      max-width: 64ch;
+      color: #43392f;
+      font-size: 1.04rem;
+      line-height: 1.8;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .pill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.7);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .hero-photo {
+      padding: 18px;
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cosmic-stage {
+      min-height: 250px;
+      border-radius: 22px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.18);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,0.10), rgba(0,0,0,0.58)),
+        url("assets/galaxy-hero.jpg") center/cover no-repeat;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+    }
+
+    .cosmic-stage::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.28), transparent 18%),
+        radial-gradient(circle at 80% 30%, rgba(122, 182, 255, 0.22), transparent 20%),
+        radial-gradient(circle at 55% 70%, rgba(255, 182, 122, 0.18), transparent 24%);
+      mix-blend-mode: screen;
+    }
+
+    .cosmic-copy {
+      position: absolute;
+      inset: auto 18px 18px 18px;
+      z-index: 1;
+      color: #fff8ef;
+      max-width: 30ch;
+    }
+
+    .cosmic-copy strong {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2rem;
+      line-height: 0.95;
+      margin-bottom: 8px;
+    }
+
+    .cosmic-copy span {
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.84);
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 14px;
+      min-height: 420px;
+    }
+
+    .portrait,
+    .avatar-card {
+      border-radius: 22px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid var(--line);
+      background: var(--panel-solid);
+    }
+
+    .portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .avatar-card {
+      display: grid;
+      align-content: end;
+      padding: 18px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.85)),
+        url("https://avatars.githubusercontent.com/u/70725440?v=4") center/cover no-repeat;
+    }
+
+    .avatar-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent, rgba(255,255,255,0.1) 30%, rgba(255,255,255,0.92));
+    }
+
+    .avatar-card > div {
+      position: relative;
+      z-index: 1;
+    }
+
+    .avatar-card .mini-label {
+      margin-bottom: 6px;
+    }
+
+    .avatar-card p {
+      margin: 0;
+      color: #2f271f;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .card {
+      padding: 28px;
+    }
+
+    .topline {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .topline .link {
+      text-decoration: none;
+      font-weight: 800;
+      color: var(--accent-2);
+    }
+
+    .profile-summary {
+      font-size: 1.02rem;
+      line-height: 1.8;
+      color: #3d342b;
+      margin: 0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .stat {
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.45rem;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .toc {
+      position: sticky;
+      top: 18px;
+      padding: 22px;
+    }
+
+    .toc nav {
+      display: grid;
+      gap: 8px;
+      margin-top: 10px;
+      max-height: 520px;
+      overflow: auto;
+      padding-right: 4px;
+    }
+
+    .toc a {
+      padding: 10px 12px;
+      border-radius: 14px;
+      text-decoration: none;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid transparent;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.35;
+      transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
+    }
+
+    .toc a:hover {
+      transform: translateY(-1px);
+      border-color: rgba(164, 81, 42, 0.18);
+      background: rgba(255,255,255,0.96);
+    }
+
+    .section {
+      margin-top: 20px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: end;
+      margin-bottom: 14px;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 70ch;
+      line-height: 1.7;
+    }
+
+    .interest-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.74);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 700;
+      color: #43382c;
+    }
+
+    .repo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .repo-card {
+      padding: 20px;
+    }
+
+    .repo-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 16px;
+      font-size: 13px;
+    }
+
+    .repo-top a {
+      color: var(--accent-2);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .repo-card p {
+      margin: 0;
+      color: #4a4035;
+      line-height: 1.7;
+    }
+
+    .repo-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+
+    .chapter-card {
+      padding: 28px;
+      margin-bottom: 18px;
+    }
+
+    .chapter-card p {
+      line-height: 1.78;
+      font-size: 1.02rem;
+      margin: 0 0 14px;
+      color: #3f352c;
+    }
+
+    .epigraph {
+      margin: 14px 0 18px;
+      padding: 16px 18px;
+      background: rgba(164, 81, 42, 0.07);
+      border-left: 3px solid var(--accent);
+      border-radius: 14px;
+    }
+
+    .epigraph blockquote {
+      margin: 0 0 10px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .epigraph figcaption {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .source-panel {
+      padding: 28px;
+    }
+
+    .source-panel pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      background: #161310;
+      color: #f4eadc;
+      padding: 18px;
+      border-radius: 18px;
+      overflow: auto;
+      font: 12px/1.6 "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    }
+
+    details summary {
+      cursor: pointer;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .footer {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 1100px) {
+      .hero, .layout { grid-template-columns: 1fr; }
+      .toc { position: static; }
+    }
+
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 18px, 1400px); }
+      .hero-main, .card, .repo-card, .chapter-card, .source-panel, .toc { padding: 20px; border-radius: 20px; }
+      .stats, .repo-grid, .photo-grid { grid-template-columns: 1fr; }
+      .photo-grid { min-height: auto; }
+      h1 { max-width: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell" id="top">
+    <section class="hero">
+      <div class="panel hero-main">
+        <div class="eyebrow">Portafolio personal</div>
+        <h1>Diego Ignacio Espinoza Núñez</h1>
+        <div class="hero-copy">
+          Bachelor in science with mention in astronomy and master student in data science at Universidad de Chile.
+          <br><br>
+          La página mezcla tu perfil personal, tus intereses, tus proyectos públicos de GitHub y el documento de Overleaf que ya está en la carpeta.
+        </div>
+        <div class="hero-meta">
+          <span class="pill">Santiago, Chile</span>
+          <span class="pill">25 repos públicos</span>
+          <span class="pill">0 seguidores</span>
+          <span class="pill">2 siguiendo</span>
+        </div>
+      </div>
+
+      <div class="panel hero-photo">
+        <div class="topline">
+          <div>
+            <div class="mini-label">Fotos</div>
+            <strong>Retrato y avatar</strong>
+          </div>
+          <a class="link" href="https://github.com/DiegoEspinozaoss" target="_blank" rel="noreferrer">Ver GitHub</a>
+        </div>
+        <figure class="cosmic-stage">
+          <div class="cosmic-copy">
+            <strong>Galaxias, datos y ciencia</strong>
+            <span>La portada usa una imagen astronómica de alta resolución para reforzar el tono del sitio y conectar tu perfil con tus intereses científicos.</span>
+          </div>
+        </figure>
+        <div class="photo-grid">
+          <figure class="portrait">
+            <img src="assets/profile-photo.jpeg" alt="Fotografía de Diego Espinoza" />
+          </figure>
+          <figure class="avatar-card">
+            <div>
+              <div class="mini-label">GitHub</div>
+              <p>Avatar público de tu perfil para reforzar la identidad visual del sitio.</p>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="layout">
+      <div class="stack">
+        <section class="card">
+          <div class="topline">
+            <div>
+              <div class="section-kicker">Sobre ti</div>
+              <h2>Perfil y contexto</h2>
+            </div>
+            <a class="link" href="https://github.com/DiegoEspinozaoss" target="_blank" rel="noreferrer">Perfil público</a>
+          </div>
+          <p class="profile-summary">I am a Master&#39;s student in Data Science at Universidad de Chile, based in Santiago, Chile.</p>
+          <p class="profile-summary">My thesis is based on the classification of variable objects with neural networks.</p>
+          <p class="profile-summary">I also currently work at a company where I build automations for email sending workflows and PDF file storage/document handling processes.</p>
+          <div class="stats">
+            <div class="stat"><strong>25</strong><span>Repositorios públicos</span></div>
+            <div class="stat"><strong>0</strong><span>Seguidores</span></div>
+            <div class="stat"><strong>2</strong><span>Siguiendo</span></div>
+            <div class="stat"><strong>Santiago, Chile</strong><span>Ubicación</span></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="section-head">
+            <div>
+              <div class="section-kicker">Intereses</div>
+              <h2>Qué te mueve</h2>
+            </div>
+            <p>Tomé estos temas del README público de tu perfil, para que la página te represente con datos reales.</p>
+          </div>
+          <div class="interest-cloud">
+            <span class="chip">Machine learning</span><span class="chip">Astronomía</span><span class="chip">Scientific computing</span><span class="chip">Football</span><span class="chip">Gym training</span>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-kicker">Proyectos</div>
+              <h2>Repositorios destacados</h2>
+            </div>
+            <p>Incluyo tus repositorios públicos destacados y los más recientes que no son forks.</p>
+          </div>
+          <div class="repo-grid">
+            
+    <article class="repo-card">
+      <div class="repo-top">
+        <span class="repo-lang">Jupyter Notebook</span>
+        <a href="https://github.com/DiegoEspinozaoss/Astroinformatica-Ramo-" target="_blank" rel="noreferrer">Abrir</a>
+      </div>
+      <h3>Astroinformatica-Ramo-</h3>
+      <p>Códigos que usé en el ramo astroinformática para tareas individuales y grupales</p>
+    </article>
+    <article class="repo-card">
+      <div class="repo-top">
+        <span class="repo-lang">Jupyter Notebook</span>
+        <a href="https://github.com/DiegoEspinozaoss/Astronomia-Experimental" target="_blank" rel="noreferrer">Abrir</a>
+      </div>
+      <h3>Astronomia-Experimental</h3>
+      <p>Informes y Códigos del ramo astronomía experimental</p>
+    </article>
+    <article class="repo-card">
+      <div class="repo-top">
+        <span class="repo-lang">Jupyter Notebook</span>
+        <a href="https://github.com/DiegoEspinozaoss/Trabajo-Tutorial-Basico" target="_blank" rel="noreferrer">Abrir</a>
+      </div>
+      <h3>Trabajo-Tutorial-Basico</h3>
+      <p>Código e informe del intento de determinar la existencia de materia oscura en el exterior del cúmulo globular NGC 5694.</p>
+    </article>
+    <article class="repo-card">
+      <div class="repo-top">
+        <span class="repo-lang">Python</span>
+        <a href="https://github.com/DiegoEspinozaoss/Mecanica-Cuantica" target="_blank" rel="noreferrer">Abrir</a>
+      </div>
+      <h3>Mecanica-Cuantica</h3>
+      <p>Código usado para una tarea en el ramo Mecánica Cuántica</p>
+    </article>
+    <article class="repo-card">
+      <div class="repo-top">
+        <span class="repo-lang">Jupyter Notebook</span>
+        <a href="https://github.com/DiegoEspinozaoss/Classification_of_Variable_Objects_with_Multimodal_Approach" target="_blank" rel="noreferrer">Abrir</a>
+      </div>
+      <h3>Classification_of_Variable_Objects_with_Multimodal_Approach</h3>
+      <p>“Repository for implementing a Multimodal classification pipeline of astrophysical variable objects using light curves, multi-resolution images and available spectra.”</p>
+    </article>
+    <article class="repo-card">
+      <div class="repo-top">
+        <span class="repo-lang">Sin lenguaje principal declarado</span>
+        <a href="https://github.com/DiegoEspinozaoss/DiegoEspinozaoss" target="_blank" rel="noreferrer">Abrir</a>
+      </div>
+      <h3>DiegoEspinozaoss</h3>
+      <p>En este repositorio describo ampliamente quien soy, mis </p>
+    </article>
+    <article class="repo-card">
+      <div class="repo-top">
+        <span class="repo-lang">Shell</span>
+        <a href="https://github.com/DiegoEspinozaoss/Multimodal_Proyect" target="_blank" rel="noreferrer">Abrir</a>
+      </div>
+      <h3>Multimodal_Proyect</h3>
+      <p>hola</p>
+    </article>
+    <article class="repo-card">
+      <div class="repo-top">
+        <span class="repo-lang">HTML</span>
+        <a href="https://github.com/DiegoEspinozaoss/Laboratorio_de_Modelamiento_Matematico_MA5500-1" target="_blank" rel="noreferrer">Abrir</a>
+      </div>
+      <h3>Laboratorio_de_Modelamiento_Matematico_MA5500-1</h3>
+      <p>En este repositorio se guardan los papers y referencias del proyecto de máxima entropía en el contexto de predicción de la evolución y movimiento de las diferentes comunidades para diferentes snapshots del oceano mediterráneo. Además, se estudia principalmente el enfoque lagrangiano por sobre el euleriano.</p>
+    </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-kicker">Documento</div>
+              <h2>La astronomía es para todos</h2>
+            </div>
+            <p>Diego Espinoza · December 2025</p>
+          </div>
+          <section class="card">
+            <p>El ser humano inventó las diferentes ciencias, no al revés. Ahora bien, si este orden es el correcto, entonces el ser humano está por encima de las ciencias. Por ende, las ciencias son un medio o instrumento que nos guía a servirnos mejor del mundo en el que nacimos. Sin embargo, como dijo el Sr Eintein, la supremacía de los tontos no puede ser superada por nadie. Porque en todos las épocas y en todas las naciones han habido hombres y mujeres dispuestas a utilizar todos los medios (incluida la ciencia) para destruir, extinguir, aniquilar y borrar de la faz de la tierra a sus pares. El hombre científico en este sentido debe ser un mártir, alguien que sin importar el régimen político que se imponga en la sociedad esté dispuesto a sostener la verdad o morir en su lugar. Porque para el científico la ciencia es el medio supremo que hemos recibido y creado para ayudarnos a nosotros mismos, y nunca aceptaría que se use como medio de opresión, humillación o degradación de nuestra propia dignidad con que hemos sido investidos por naturaleza. En este sentido decimos que el ser humano no fue creado para la ciencia, porque la ciencia no puede ser beneficiada por nosotros, como si necesitase algo de nuestra mano. En cambio nosotros sí necesitamos de ella, aprender de ella y mirar mediante ella el inmenso cosmos del cual somos una pequeña parte.</p><p>El ser humano no es para la ciencia, sino la ciencia para el ser humano se parece a las frases &quot;el hombre no fue hecho para el sàbado, sino el sàbado para el hombre&quot; o &quot;no fue el hombre hecho para la mujer, sino la mujer para el hombre&quot;. Sin embargo, debemos decir de manera màs precisa: el hombre no es sin la ciencia, ni la ciencia sin el hombre. El hombre no es sin la religiòn ni la religiòn sin el hombre, asì como la mujer no es sin el hombre ni el hombre sin la mujer.</p><p>Los científicos pueden parecer crudos (incluso fanáticos) cuando defienden lo que ellos consideran hechos científicos. Pero más que defender la verdad, deberían defender a las personas de la desinformación. Porque como dijo Nietzche la verdad no es tan débil que necesite de alguien que la defienda. Pero sin embargo, el conocimiento de las personas que ignoran estos hechos las hacen completamente indefensas y frágiles en un mundo que continuamente crece en tecnología, pero también en crueldad, robo y desenfreno por medio de ella. Como dije antes, existen y existirán hombres rapaces que están dispuestos a devorar a los inocentes e ingenuos, hombres que, resisten por lo general lo que se considera</p><p>He escuchado varias cosas en mi vida universitaria: &quot;yo querìa estudiar dicha carrera&quot;, &quot;me cargan las personas que menosprecian a la ingenierìa elèctrica, como si fuera poca cosa, como si no tuviera valor&quot;, &quot;en mi trabajo llego a irritarme cuando me preguntan en tono menospreciativo ¿no eres quìmico farmacèutico? cuando en realidad soy ingeniero quìmico&quot;. Muchas de estas cuestiones y otras anàlogas me ha llevado a concluir que entre las personas que no estudian otra carrera diferente de la suya misma tienen prejuicios en contra de las mismas, y que, en general justifican a priori su decisiòn de haber estudiado la carrera que eligieron porque en el estado actual de su desarrollo, ya sea en el conocimiento que hallan o en el trabajo que obtienen de ella, hallan placer en sus frutos. Reflexionando con un amigo, notamos que en general las personas menosprecian cosas de las cuales carecen de conocimiento. Asì, por ejemplo, notamos que las personas que dicen &quot;¿no tienes novia a tu edad?&quot; o &quot;¿no has buscado trabajo?&quot; menosprecian muy a menudo a las personas que han terminado su carrera universitaria o bien han obtenido conocimiento de ella. Y es que en las conversaciones con dichas personas se refleja su pensamiento, el cual consiste en que si no puedo demostrar tener algo o como menos, tener algo con lo cual compararme con los demas, o tambièn mostrar alguna posesiòn (como novia, mi auto, mi trabajo o mi dinero o mi fama en redes sociales), carezco de valor como persona. Sin embargo, mi punto de vista es el siguiente: aprecio y le doy el valor que merece a cada persona, independiente de su carrera, trabajo, estado relacional, etc. Y No por eso dejo de valorar las carreras de dichas personas, trabajos o estados de relaciòn. Porque valoro sus carreras, por muy diferentes que parezcan en nivel de academicismo o de reconocimiento.</p>
+          </section>
+          <section class="source-panel" style="margin-top:16px;">
+            <details>
+              <summary>Ver fuente LaTeX completo</summary>
+              <pre>\documentclass{report}
+\usepackage{epigraph} 
+\usepackage{ragged2e}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[spanish]{babel}
+\title{La astronomía es para todos}
+\author{Diego Espinoza}
+\date{December 2025}
+
+\begin{document}
+
+\maketitle
+
+\chapter{La ciencia y el ser humano}
+
+\epigraph{\justifying{En muchas disciplinas (científicas) el problema no consiste en encontrar una solución particular, sino en combinar muchas de ellas ya conocidas de antemano}}{\textit{Juan Flores}}
+\epigraph{\justifying{La ciencia es para el ser humano, y no el ser humano para la ciencia}}{\textit{Albert Einstein}}
+
+
+El ser humano inventó las diferentes ciencias, no al revés. Ahora bien, si este orden es el correcto, entonces el ser humano está por encima de las ciencias. Por ende, las ciencias son un medio o instrumento que nos guía a servirnos mejor del mundo en el que nacimos. Sin embargo, como dijo el Sr Eintein, la supremacía de los tontos no puede ser superada por nadie. Porque en todos las épocas y en todas las naciones han habido hombres y mujeres dispuestas a utilizar todos los medios (incluida la ciencia) para destruir, extinguir, aniquilar y borrar de la faz de la tierra a sus pares. El hombre científico en este sentido debe ser un mártir, alguien que sin importar el régimen político que se imponga en la sociedad esté dispuesto a sostener la verdad o morir en su lugar. Porque para el científico la ciencia es el medio supremo que hemos recibido y creado para ayudarnos a nosotros mismos, y nunca aceptaría que se use como medio de opresión, humillación o degradación de nuestra propia dignidad con que hemos sido investidos por naturaleza. En este sentido decimos que el ser humano no fue creado para la ciencia, porque la ciencia no puede ser beneficiada por nosotros, como si necesitase algo de nuestra mano. En cambio nosotros sí necesitamos de ella, aprender de ella y mirar mediante ella el inmenso cosmos del cual somos una pequeña parte. 
+
+El ser humano no es para la ciencia, sino la ciencia para el ser humano se parece a las frases &quot;el hombre no fue hecho para el sàbado, sino el sàbado para el hombre&quot; o &quot;no fue el hombre hecho para la mujer, sino la mujer para el hombre&quot;. Sin embargo, debemos decir de manera màs precisa: el hombre no es sin la ciencia, ni la ciencia sin el hombre. El hombre no es sin la religiòn ni la religiòn sin el hombre, asì como la mujer no es sin el hombre ni el hombre sin la mujer. 
+
+
+\chapter{La cercanía de la ciencia}
+\epigraph{\justifying{Un espíritu científico no puede sentir timidez o tener reparos cuando se está tratando de la cruda realidad}}{\textit{Monique Wittig}}
+Los científicos pueden parecer crudos (incluso fanáticos) cuando defienden lo que ellos consideran hechos científicos. Pero más que defender la verdad, deberían defender a las personas de la desinformación. Porque como dijo Nietzche la verdad no es tan débil que necesite de alguien que la defienda. Pero sin embargo, el conocimiento de las personas que ignoran estos hechos las hacen completamente indefensas y frágiles en un mundo que continuamente crece en tecnología, pero también en crueldad, robo y desenfreno por medio de ella. Como dije antes, existen y existirán hombres rapaces que están dispuestos a devorar a los inocentes e ingenuos, hombres que, resisten por lo general lo que se considera 
+
+
+\chapter{La ciencia trabaja bajo paradigmas}
+\epigraph{\justify{Rechazar un paradima sin sustituirlo simultáneamente por otro es rechazar la ciencia misma}}{\textit{Thomas Kuhn}}
+
+\chapter{Existen muchas ciencias}
+\epigraph{\justifying{La depreciación de los hechos históricos está profundamente arraigada, y probablemente de manera funcional, en la ideología de la profesión científica, la misma profesión que otorga el mayor valor a los detalles fácticos de otro tipo}}{\textit{Thomas Kuhn}}
+He escuchado varias cosas en mi vida universitaria: &quot;yo querìa estudiar dicha carrera&quot;, &quot;me cargan las personas que menosprecian a la ingenierìa elèctrica, como si fuera poca cosa, como si no tuviera valor&quot;, &quot;en mi trabajo llego a irritarme cuando me preguntan en tono menospreciativo ¿no eres quìmico farmacèutico? cuando en realidad soy ingeniero quìmico&quot;. Muchas de estas cuestiones y otras anàlogas me ha llevado a concluir que entre las personas que no estudian otra carrera diferente de la suya misma tienen prejuicios en contra de las mismas, y que, en general justifican a priori su decisiòn de haber estudiado la carrera que eligieron porque en el estado actual de su desarrollo, ya sea en el conocimiento que hallan o en el trabajo que obtienen de ella, hallan placer en sus frutos. Reflexionando con un amigo, notamos que en general las personas menosprecian cosas de las cuales carecen de conocimiento. Asì, por ejemplo, notamos que las personas que dicen &quot;¿no tienes novia a tu edad?&quot; o &quot;¿no has buscado trabajo?&quot; menosprecian muy a menudo a las personas que han terminado su carrera universitaria o bien han obtenido conocimiento de ella. Y es que en las conversaciones con dichas personas se refleja su pensamiento, el cual consiste en que si no puedo demostrar tener algo o como menos, tener algo con lo cual compararme con los demas, o tambièn mostrar alguna posesiòn (como novia, mi auto, mi trabajo o mi dinero o mi fama en redes sociales), carezco de valor como persona.  Sin embargo, mi punto de vista es el siguiente: aprecio y le doy el valor que merece a cada persona, independiente de su carrera, trabajo, estado relacional, etc. Y No por eso dejo de valorar las carreras de dichas personas, trabajos o estados de relaciòn. Porque valoro sus carreras, por muy diferentes que parezcan en nivel de academicismo o de reconocimiento. 
+
+En general, asì como hay muchos trabajos, hay muchas ciencias dedicadas a muchos de ellos. Y asì como hay muchas ciencias hay muchos paradigmas que trabajan dentro de cada una de ellas. Como todas son esferas diferentes, todas son vàlidas y aplicables desde cierto punto de vista. Sin embargo, como se ha dicho muchas veces, el mundo cientìfico tiende o tenderà a una unificaciòn de conceptos o como menos, de paradigmas. Por lo tanto, podemos decir que las ciencias aùn se hallan en su estado embrionario. 
+
+Me he percatado tambièn de que en la antiguedad las personas que se dedicaban a las ciencias o tenìan mucho apoyo econòmico, o escaso. En la actualidad sucede lo mismo, porque estudiar ingenierìa no es lo mismo que estudiar una carrera cientìfica, que en general requiere mayor cantidad de tiempo para obtener una posiciòn laboral estable. En la antiguedad los astrònomos por ejemplo, eran patrocinados en cuanto a sus trabajos por reyes o por personas muy ricas. Y no es muy diferente en la actualidad. Como se solìa perseguir en ocasiones a los que tenìan un nuevo descubrimiento en sus manos, a veces suele suceder en la actualidad, o bien es ignorado y dejado su mèrito en el olvido. 
+
+
+
+\chapter{La ciencia de los cielos}
+\epigraph{\justifying{Pero cuál es el numero de estos movimientos [de astros] es lo que debemos preguntar a aquella de las ciencias matemáticas que más se aproxima a la filosofía; es decir, a la astronomía}}{\textit{Aristóteles}}
+\epigraph{\justifying{La astronomía es una ciencia hecha del material con el que se forjan los sueños}}{\textit{Anónimo}}
+Mientras màs se ha desarrollado el mùsculo de las matemàticas en el curso de la historia, cuanto màs se ha acercado esta a las ciencias en general. Porque es evidente que a medida que las matemàticas se desarrollaron màs profundamente en demostraciones, teoremas, hipòtesis, etc. cuanto màs acercaron la posibilidad de describir cuantitativamente casi todas las cosas que suceden en nuestra modernidad. Y como todas las ciencias parecen describir casi todos los fenòmenos fìsicos, parece ser que las matemàticas vienen a ser particularmente de todas ellas su fundamento: geologìa, astronomìa, fìsica, biologìa, quìmica, etc. Tomemos el caso de astronomìa: sin las matemàticas es imposible la formulaciòn de leyes o patrones entre los cuales estàn: las propias fuerzas o las partìculas con sus fenòmenos respectivos. Entre las fuerzas contamos: la ley de gravitaciòn universal, la teorìa de la relatividad especial y general, etc. 
+
+
+
+
+
+
+\chapter{Los límites de la ciencia}
+\epigraph{\justifying{Indudablemente, cada uno es dueño de crear hipótesis a su gusto, pero no deben tocarse los límites de lo imposible}}{\textit{Aristóteles}}
+
+\epigraph{\justifying{La ciencia no puede resolver el misterio último de la naturaleza. Y eso se debe a que, en última instancia, nosotros mismos formamos parte de la naturaleza y, por lo tanto, formamos parte del misterio que intentamos resolver}}{\textit{Max Planck}}
+
+\epigraph{\justifying{Los científicos esperan estar equivocados, los políticos esperan estar en lo correcto.}}{\textit{Cesar Fuentes}}
+
+El mundo tiene su fin, o al menos eso predican muchas teorías del fin del universo. Si es así, que el universo tiene un desenlace, entonces nosotros y por consiguiente nuestras ciencias tendrán inevitablemente un fin. Por otro lado, las ciencias no pueden demostrar ni comprender todos los fenómenos del universo, porque las matemáticas (la reina de las ciencias, Friedrich Gauss) que son más precisas que todas las demás no pueden hacerlo y por consiguiente mucho menos todas las demás. 
+
+Sin lugar a dudas, en el pasado se consideraban hazañas del presente como imposibles. En general, con el cambio de conceptos y con la incorporaciòn de nuevas tecnologìas siempre es posible considerar algo posible que anteriormente era imposible, que ni si quiera formaba parte de los sueños de las personas. Asì, por ejemplo, para Aristòteles hubiera sido absolutamente absurdo visitar una vez la luna, objeto celeste que èl consideraba perfecto e inmutable, como todos los demàs objetos celestes. Tambièn, para los primeros cientìficos quizà hubiera sido imposible creer o llegar a creer, que el ser humano lograrìa algùn dìa volar o sumergirse en las profunidades de los ocèanos. 
+
+No todo lo que es posible, es necesario, ni tan solo real. Porque lo que es real, no siempre es necesario, pero lo que es necesario siempre es real. Asì, metafìsica/ontològicamente hablando, es posible que una teorìa se adecùe a los datos que tenemos sobre un fenòmeno, pero sin embargo, no se sigue de ahì que dicha teorìa sea verdadera. Bien porque no tenemos todos los datos, o bien porque los datos estàn incorrectamente interpretados, o incorrectamente medidos. Por lo tanto, una teorìa puede ser calificada como objetiva, y sin embargo, ser incompleta, falsa o incluso ni tan solo una teorìa. 
+
+Es interesante que existe entre algunos cientìficos el deseo de conocer una teorìa a partir de un conjunto pequeño de axiomas o principios que pueda explicar de una manera matemàticamente simple todos los fenòmenos del universo. Incluso dirìa que dichas personas querrìan que dicha teorìa fuese una necesidad ontològica de la naturaleza del universo, es decir, que sì o sì deba dicha teorìa decirnos porquè existen unas constantes fìsicas y no otras en cambio. Ademàs, es necesaria en el sentido de que el mismo universo en el que vivimos es un objeto necesario de la realidad, es imposible que sea de otra manera. Porque o bien el universo existe por azar, o bien por inteligencia, o bien por necesidad. Pero ellos rechazan el que exista por azar por la exacta determinaciòn de las constantes fìsicas, y tambièn la inteligencia porque creen que no puede existir un ser superior. Por lo que les queda solamente que exista el universo por necesidad. Pero hasta donde sabemos, no hay nada que necesite del universo en sì. Porque si el universo no existiera, nada cambiarìa. Porque si no hay universo, no hay nada que exija que el mismo venga a crearse o permanecer. Sin embargo, debemos tener en cuenta que el azar no es causa de nada, sino de manera accidental. Desde cierto punto de vista el azar es nuestra ignorancia de la causa de ciertos fenòmenos, cualitativa o cuantitativa. Pero asignar una causa a un objeto o sujeto desconocido no es otra cosa que tener fe. Asì, por ejemplo, decir que el resultado del lanzamiento de una moneda es por puro azar, cuando sabemos que existen dos resultados posibles, no es sino una demostraciòn de que no sabemos què es lo que causa que exista una dicotomìa en el espacio muestral. Por lo tanto, a priori asumimos que existe una causa que explica la cardinalidad del espacio muestral. Y asumir que existe dicha causa existe sin conocer todos los factores no es otra cosa que tener fe. 
+
+
+
+\chapter{La poesía y la astronomía}
+\epigraph{Eramos los elegidos del sol\\
+Y no nos dimos cuenta\\
+Fuimos los elegidos de la más alta estrella\\
+Y no supimos responder a su regalo}{\textit{Vicente Huidobro}}
+\epigraph{Ojitos de las estrellas,\\
+de pestañitas inquietas, \\
+¿por qué sois azules, rojos\\ 
+y violetas?}{\textit{Gabriela Mistral}}
+
+
+\chapter{El legado científico}
+\epigraph{\justifying{Recordamos el pasado pero no el futuro}}{\textit{Sean Carroll}}
+Algo que me llama la atenciòn del ser humano es que casi siempre busca dejar algùn legado, algùn objeto que le permita a sus conocidos recordarle o bien hacer algo que sea recordado por todos. Y es que en general el ser humano es un ser con memoria, y èl mismo siempre ha buscado ser recordado por otros. Màs aùn, le gustarìa recordar siempre que hay alguien que lo recuerda. Y es que todos desean de cierta forma la vida, pero no todas las cosas de la vida, sino solo las cosas necesarias de la misma. Y una de las cosas que ellos consideran necesarias es el recuerdo o la memoria del pasado. Porque podemos a lo màs recordar el pasado (el futuro no puede ser recordado, porque aùn no existe). Y dado que somos seres que viven en conjunto o en relaciòn con otros, buscamos tener algo en comùn con los otros. Y en general buscamos ser aceptados por alguien, aunque sea uno, pero tambièn dicha forma de ser aceptados es residir continuamente en el recuerdo de alguien, ya sea un amigo, familiar, conocido, etc. 
+
+Y tener algo en comùn con dichas personas es posible solo cuando tenemos recuerdos de nuestras vivencias en comùn. De todo lo anterior podemos concluir que queremos que alguien nos recuerde, porque queremos al menos a alguien: a nosotros mismos. Queremos recordarnos a nosotros mismos! pero tambièn en la mayorìa de los casos que nos recuerden. Y sin el recuerdo de nuestro pasado yo, no tiene sentido nada. Porque somos nosotros, y nosotros estamos hechos de nuestro pasado y presente. Pero dado que todos los demas nos pueden recordar solo por el pasado, se sigue que nos importa, y mucho, ser recordados. 
+
+Toda vez que hacemos algo esperamos que alguien haga algo por nosotros de vuelta, como menos, que nos recuerde. Ni si quiera que recuerde que hicimos algo bueno a sus propios ojos, sino que hicimos algo. Y porquè no queremos morir, sino es porque no queremos perder los recuerdos de lo que fue? no es acaso porque sabemos que ser olvidado es lo peor que le puede suceder a alguien? Pero no es peor no saber si me recuerdan? A su vez, toda decepciòn que nos llevamos de alguien en esta vida va acompañada de alguien que nos &quot;olvidò&quot;. Asì, decimos que &quot;un amigo se olvidò de su promesa&quot;, que el &quot;estado se olvidò de los pobres&quot;, y en fin, &quot;que Dios se olvidò de su mundo&quot;, cuando decimos que estamos triste. No existe nada màs aterrador que el olvido para la mente de alguien que ama pensar. Por eso, el que ya perdiò por otros motivos su propòsito en esta vida, puede decir: &quot;ya no quiero pensar, solo quiero olvidar&quot;.
+
+Y en general, el ser humano busca ser recordado, que alguien conozca una porciòn de sus propios pensamientos. Asì, escriben libros, edifican casas o edificios a sus nombres, crean fundaciones, y toda una serie de objetos por medio de los cuales pretenden inmortalizar su propia actividad. Y todas las comunidades cientìficas no son una excepciòn. Porque los cientìficos buscan varias cosas, entre ellas escribir artìculos con sus descubrimientos, crear instituciones de investigaciòn con el nombre de cientìficos reconocidos, darle homenaje a ciertos descubridores por medio de nombres de fenòmenos, etc.
+
+
+\chapter{Las leyes y la ciencia}
+\epigraph{\justifying{La ley, al disponer solo de manera general, no puede prever todos los casos accidentales}}{\textit{Aristóteles}}
+\epigraph{\justifying{Los problemas de astronomía son como los problemas de la vida real}}{\textit{Francisco Förster}}
+
+
+Seguramente, es de saber que en nuestro mundo existe para cada sociedad un conjunto de leyes que rigen y regulan las relaciones entre los miembros de las mismas. Pero dado que no es posible definir todos los detalles mìnimos por medio de reglas generales, es preciso que, si la ley ha de regular todos los casos, que la misma sea modificada. Asì, casos como &quot;hombre mata a niño&quot;, &quot;hombre quema una casa&quot;, etc. no son claramente categorizables como aquellos casos en los que el delincuente debe pagar o quedar preso por la ley que dice &quot;todo ser humano nace libre, etc.&quot;. Es decir, una ley o proposiciòn como esa, que tiene la intenciòn de ser muy general y en ocasiones ambigua en cuanto a su aplicaciòn, debe ser modificada agregando o quitando porciones de la misma. 
+
+Y mucho màs, sabiendo que el edificio de las ciencias naturales crece dìa a dìa, cuyo conocimiento aumenta y sobreabunda, es necesario que en pro de dicho nuevo conocimiento y nuevas tècnicas o tecnologìas se modifiquen las leyes para el propio beneficio del ser humano. Darè algunos ejemplos: si crea una tecnologìa que permite conocer antes de que suceda un delito, entonces deberìa modificarse ese corpus de leyes o normas que indican que existe plena libertad para que una persona circule libremente por las calles de un paìs. O si se crea un dispositivo que mejora o supera en tiempo de traslado a los del tiempo actual, entonces las leyes que deberìan ser modificadas son las de trànsito. O si se crea un alimento que le permite al ser humano comer una sola vez al dìa, deberìan crearse o abolirse leyes sobre su comercializaciòn, crearse o destruirse ministerios, etc. 
+
+Es decir, en general, deberìan modificarse no solamente por ejemplo en nuestro paìs la constituciòn, sino tambièn toda la estructura de leyes, normas, estatutos o decretos que existen a diferentes niveles.
+
+
+
+\chapter{La ciencia y Dios}
+\epigraph{Porque de otra forma resultaria que Dios y el mundo no existían, puesto que su acción no tiene nada de exterior, sino que permanece concentrada en ellos mismos}{\textit{Aristóteles}}
+Parece que el universo por definición es aquello en lo que podemos percibir o medir algun efecto. Por eso, se dice que el universo observable es todo lo que podemos ver, porque lo que está más allá nunca nos podrá comunicar algún efecto como causal.
+
+Dios esta  por fuera de la ciencia, o en contra, o bien no està en contra. En todo caso, parece que Dios tiene preferencia por mostrarse en todos los fenomenos.
+
+
+
+\chapter{La ciencia y las matemáticas}
+\epigraph{\justifying{Por lo tanto, está claro que la naturaleza del número no es la que le dan los filósofos que le consideran como un ser independiente [...] el número no es, pues, una causa eficaz, y ni el número en general ni el compuesto de unidades son la materia constituyente, o la esencia, o forma de las cosas; voy más lejos: no es ni tan solo la causa final}}{\textit{Aristóteles}}
+\epigraph{\justifying{El milagro de la idoneidad del lenguaje de las matemáticas para la formulación de las leyes de la física son un regalo maravilloso que no podemos entender ni merecer}}{\textit{Eugene Wigner}}
+Si los numeros son parte de la realidad o no lo son, es algo que ha sido parte del debate filosofico de muchos autores.
+
+Los numeros, si bien no son objetos o sujetos que pueden causar o ser causados, sin embargo, son conceptos que describen absolutamente con mucha precisiòn ciertas relaciones de objetos que en efecto existen.
+
+En las ciencias modernas, existe la suposicion de que todos los fenomenos son susceptibles de ser analizados madiante metodos matematicos o funciones. Asi, la inteligencia aritifical, los fenomenos fisicos, quimicos, biologicos, etc.
+
+
+
+
+\chapter{La ciencia y las mujeres}
+\epigraph{\justifying{Algo tranquilizador es que en algunos países hay una gran proporción de mujeres que hacen astronomía, física y ciencia en general. Demuestra que las mujeres pueden desempeñarse bien en estas materias; que los cerebros de las mujeres pueden hacer ciencia perfectamente bien, pero el problema es que las mujeres mayores cuentan a las mujeres jóvenes cosas como: No deberías hacer física. No disfrutarías de un tema como ese porque es de hombres, no lo hagas}}{\textit{Jocelyn Bell Burnell}}
+
+En el mundo en el que vivimos, no siempre el que tiene más mérito, talento o habilidad es el que más reconocimiento recibe, ni tan si quiera a veces reconocimiento alguno por sus contemporáneos. Como tampoco en muchos trabajos actualmente hombres o mujeres reciben el puesto que merecen, y otros hombres y mujeres reciben el puesto que no merecen. Así también, tenemos casos de científicos que no fueron premiados o reconocidos por sus descubrimientos o teorías. Esto nos da a entender que en la vida tener reconocimiento no debe definir nuestra identidad. El caso más célebre en mi opinión es el de Jocelyn Bell Burnell, astrónoma que en el año 1967 descubrió un nuevo objeto celeste: los Púlsares. Y aunque fue así, los que recibieron el premio nobel en 1974 por dicho descubrimiento fueron sus dos profesores guías (dos hombres por lo demás): Antony Hewish y Martin Ryle. Por eso incluso algunos de sus pares le llamaban el premio No-Bell (en alusión a su apellido). Antes las mujeres pensaban que no podrían lograr algún éxito en las ciencias, quizás por el mismo hecho del reconocimiento, porque el reconocimiento se considera como una especie de éxito en dichas áreas. 
+
+Aquello que es lo primero en suceder, siempre se considera de mayor importancia, porque es lo que causa una ruptura en alguna serie de eventos. Así, para nosotros es importante la primera vez que alguien observaba un objeto celeste (una estrella, cometa, planeta, etc.), la primera vez que alguien descubría un nuevo continente (como en el caso de América), la primera vez que alguien pisaba la luna, etc. Y en el caso de las mujeres, al ser el género que siempre ha sido menospreciado, el género que ha vivido a la sombra de los logros del hombre, toda vez que se halla una primera vez, se dice que es un logro. Como toda vez que se dice que es la primera mujer en &quot;ir a la luna&quot;, &quot;sufragar&quot;, &quot;ser presidenta&quot;, &quot;obtener un título universitario&quot;. Por lo que la irrupción de la mujer en cualquier trabajo en general fue, es y será algo que marca el nivel de igualdad entre mujeres. 
+
+El que antes la mujer no pudiera sufragar indica que no se consideraba como un ser político, el que antes ellas no pudieran realizar algún trabajo de investigación indica que no eran consideradas seres pensantes, el que no recibieran reconocimiento alguno por parte de las sociedades implica que no eran consideradas como seres con habilidad alguna (exceptuando quizás habilidad para el mal). Pero como dijo John Stuart Mill, para que la mujer pueda ser feliz, debe lograr ser independiente del hombre en todo sentido, o como menos, tener dicha oportunidad. Y ser independiente del hombre implica que su voto es solo suyo, que su investigación es dirigida solo por ella o que no necesita a un hombre para recibir reconocimiento público. Dicho de otra manera, con el avance del tiempo se puede decir que la mujer ha logrado depender y necesitar cada vez menos del hombre para subsistir. 
+
+Actualmente me llama la atencion el hecho de que todos hablan del sesgo de gènero, como si fuera el ùnico que existe. Aquì se muestra un estracto de una periodista que me llamó mucho la atención. 
+
+Benjamín Rivas Beltrán, grábense ese nombre. Tiene 18 años, estudió en un liceo de Curanilahue y es puntaje nacional en matemáticas.
+
+Ya es un mérito no viniendo de los típicos colegios. Pero además, Benjamín vive con parálisis cerebral.
+La parte medio llena del vaso: en Chile ha aumentado la cantidad de personas con discapacidad que ingresan a la educación superior y también las que la terminan. La parte vacía del vaso es que no llegan al 10\% entre quienes están en situación de discapacidad.
+Las ponemos en esa situación porque no hacemos las adecuaciones básicas. Si hay dos libros, uno en braille y otro tradicional, la persona ciega y usted pueden leer. Pero pongo en una situación de discapacidad a quien no ve con los ojos si no le entrego ese libro en relieve. Es cuestión de perspectiva, porque si se apaga la luz… y están los dos libros, ¿quién es ciego ahí? Usted.
+Benjamín ha tenido que luchar en un país que jamás pensaría en dejar de usar el cobre, pero que se da el lujo de perderse talentos como él, que quedan en el camino por falta de recursos o apoyo.
+Esto no es buenismo, es un tema de DD. HH. Nos parecería escandaloso hacer colegios o universidades sin baños, pero aceptamos que abran sin equipos profesionales de inclusión.
+En Chile no sobran los Benjamines. Nadie sobra, pero intuyo que, como marchan poco las personas con discapacidad, rara vez son prioridad. Este será un mejor país el día en que una discapacidad sea un diagnóstico y no un pronóstico de lo que lograrás.&quot; Mónica Rincòn 
+
+Algo que me llama la atencion es que antiguamente se solia creer que porque alguien pueda tener sexo, es lìcito que lo tenga (por ejemplo, que las mujeres tengan sexo cuando cumplen 12 a 13 años). Pero analizandolo bien, si alguien tiene las capacidades fìsicas para robar, no se deduce de ello que sea lìcito hacerlo. Ni tampoco que porque pueda trabajar, deba hacerlo. O porque pueda prostituirse sea bueno, benèfico o lìcito. Un niño, y en particular una niña, no debe ni deberìa ser puesto por la sociedad en una situaciòn en la cual necesite tener sexo, trabajar o prostituirse o robar siendo una niña. Porque el niño y la niña son el principio de la vida propia suya, asì como de la vida en comunidad. Por lo que ponerla en una situaciòn asì a temprana edad implica cohartar sus habilidades cuyo tiempo tendrìa que invertir en actividades ilìcitas y perversas.
+
+
+\chapter{La observación en la ciencia}
+\epigraph{\justifying{Según la mecánica cuántica, lo que podemos observar del mundo es sólo un minúsculo subconjunto de lo que realmente existe}}{\textit{Sean Carroll}}
+
+Según lo que he podido apreciar del mundo de las ciencias, hay una enormidad de cosas que no podemos ver pero de las cuales tenemos certeza de su existencia: el tiempo, el espacio, la función de onda de la mecánica cuántica (y todos los &quot;observables&quot; de la misma teoría), los agujeros negros, el Big Bang, el centro de planetas/estrellas/etc. Analizaré a continuación cada uno de los objetos mencionados (si es que son objetos propiamente hablando). 
+
+Tiempo y Espacio
+
+El tiempo, como se ha dicho a veces, forma parte del continuo espacio-tiempo descrito por la teoría de la gravedad de Einstein, por lo que con su par el espacio son considerados como entes reales. Además, es claro que no podemos ver el tiempo, porque a lo más podemos observar las cosas que suceden en el espacio. Y aún así no podemos observar el espacio, porque el tejido espacial no es visible por sí mismo, sino su contenido. Así podemos decir que en general ni el tiempo ni el espacio son visibles, sino solo lo que aquéllos contienen: sucesos y objetos (porque en el tiempo hay sucesos y en el espacio hay objetos).
+
+La función de onda
+
+La función de onda y, en general, todos los objetos matemáticos que se usan en la teoría de la mecánica cuántica son objetos que se consideran algo real, porque si no fuera real, no tendrían efecto en el mundo. Pero además se considera evidentemente que ninguna función matemática es visible, porque son objetos abstractos o ideas, que a pesar de ser tales, son reales y tienen efectos empíricos. Por lo tanto, podemos concluir que la función de onda no es visible (porque es una función). 
+
+Los agujeros negros
+
+Como se ha repetido muchas veces, lo que nosotros vemos no es el agujero negro como tal (como en las imágenes de los años 2019 y 2021) sino su sombra (o para ser más rigurosos, la sombra de su alrededor). Y para entender esto es necesario definir el agujero negro como aquella región del espacio y del tiempo en el cual la curvatura del espacio es tal que la luz no es suficiente para escapar más allá de su horizonte de eventos (algo así como el límite que marca su volumen). Pero dado que la sombra por definición es la ausencia de luz, al haber ausencia de luz en la región donde deberíamos ver al agujero negro, concluimos que su imagen es una sombra (así como no hay problema en decir que la sombra de una persona es en realidad una imagen).
+
+ El Big-Bang
+
+Lo que de antaño se utilizaba para denostar una teoría sobre el origen del cosmos, hoy en día es generalmente aceptado entre muchas comunidades científicas. Un hito clave para entender porqué no es visible es el de que en la medida en que miramos objetos (como galaxias, estrellas, polvo interestelar, etc.) más lejanos (alejados a millones de kilómetros, unidades astronómicas, pársecs, etc.), en realidad estamos viendo cómo eran dichos objetos en el pasado. Por lo que, si vemos objetos muy lejanos en realidad estamos viendo objetos muy antiguos. Pero el universo no quiere que miremos más allá del límite en el cual pasaron 380.000 años después del Big Bang, porque antes de eso los fotones que formaban la luz del universo no podían &quot;volar&quot; mucho espacio sin chocar o ser absorbidos. Y antes de eso nada podemos ni podremos ver nunca, porque lo que pasó en el pasado no puede ser modificado. En pocas palabras, el Big Bang es el primer instante del universo, y está en el pasado. Aquí tenemos otro momento del mundo que jamás veremos, no importa cuán profundo sea nuestro conocimiento, ni cuán avanzados estemos como civilización. 
+
+Centro de planetas o estrellas:
+
+El centro de estrellas y planetas (algunos de los cuales se consideran estrellas fallidas, como aquellos que están compuestos casi enteramente de gas y/o polvo) no son posibles de ver. Lo único que disponemos actualmente es de uno o más marcos teóricos que nos dicen bajo cierta cantidad de suposiciones y evidencias que todos los planetas que son esféricos, tienen un centro caliente (por lo general, el de las estrellas de millones de grados celsius y el de los planetas como la tierra de miles de grados). Pero debido a dichas elevadas temperaturas y a la profundidad inmensa (en la tierra seis mil kilómetros de radio o una vez y media el largo de Chile) no es posible acercarnos con la tecnología actual a ver cómo es su interior.
+
+Nube de Oort, enanas rojas, estrellas de poblacion tipo III, energia oscura, materia oscura.
+
+En general, en la vida cotidiana hay miles (una infinidad) de cosas que no hemos visto personalmente pero que creemos que existen o existieron: nuestro tatara-abuelo (y toda nuestro árbol genealógico), casi ocho mil millones de seres humanos (que nunca hemos personalmente visto),  y voy más allá: nuestro propio cerebro (incluidos la mayoria de nuestros órganos internos, y que sin embargo, tenemos ciencia cierta de que existen por sus efectos, e incluidos también todos sus elementos componentes, millones de células, microbiota, organelos, átomos, etc.).
+
+En definitiva, si no podemos ver todas las cosas del presente, mucho menos podemos ver las todas las cosas del pasado, y mucho menos en consecuencia, las cosas o eventos del futuro. Podemos decir que el intento constante de ciertos grupos de personas por negar ciertos hechos históricos porque simplemente no los vieron o porque no los pueden repetir, es negar no solo la historia, sino el mismo fundamento de muchas ciencias, entre ellas la astronomía y la arqueología. Porque dichas dos ciencias están hechas de tal manera que no necesitan experimentos repetibles, debido a que por un lado no podemos repetir el universo en sí (en el caso de la astronomía) ni pedirle a un ser vivo que viva y vuelva a morir para ver cómo eran las condiciones en las que murió. Podemos calificar dicho espíritu de anticientífico. 
+
+Dicho espíritu es el mismo que tiende a relativizar el cambio climático, las crisis sanitarias (el covid 19 por ejemplo), los aportes de las matemáticas (sobre todo en la juventud) y más bien tiende a creer en fábulas como el terraplanismo, el creacionismo literal, los iluminatis, fenómenos ovni (y todo lo relacionado a criaturas fantásticas de ese género, como el hombre de las nieves, etc.), etc. La negación no es solo de lo que no se ve, sino de lo que no se siente, huele, oye, piensa, escucha o experimenta. Pero incluso esto, como dijimos más arriba, va más allá de lo que nos permite la o las ciencias. 
+
+
+
+Una paradoja es un evento que reviste algo de contradictorio en apariencia, un misterio es un evento cuya veracidad queda velada, pero no su verdad o su existencia. Asì, es una paradoja la del gato de Schrodinger o la del abuelo, pero un misterio còmo se crea una partìcula o destruye la misma, cuàl es el valor de verdad de una proposiciòn indemostrable. La paradoja y el misterio ambos son de naturaleza subjetiva, porque desde cierto punto de vista la paradoja es algo que a una persona le parece contradictorio, es decir, que es falso y verdadero, y en el caso del misterio es un caso que a una persona le parece imposible de conocer algùn mecanismo o su propia veracidad. La paradoja parece falso (y por ende contradictorio) pero cuya demostraciòn se mantiene oculta (en este caso, se exhibe cierta ignorancia de que un argumento puede no ser necesariamente vàlido), el misterio es algo que nos parece verdadero pero cuya demostraciòn es oculta (en este caso, se exhibe cierta ignorancia de que una proposiciòn puede ser verdadera aùn si no sabemos còmo demostrarla). La paradoja tiene que ver con la ignorancia de la necesidad lògica de un argumento, mientras que el misterio tiene que ver con la ignorancia de la existencia de dicho argumento. Por ejemplo, la paradoja del abuelo es paradoja porque se ignora que no necesariamente por viajar al pasado y matar a mi abuelo me muero, y un misterio como el de la muerte de  una persona existe por la ignorancia de la existencia del asesino de dicha persona. Una paradoja se dice de algo que tiene que ver con la contradiccion de algo, un misterio con una caja negra cuyo contenido es desconocido. 
+
+
+\chapter{La ciencia y la libertad de pensamiento}
+\epigraph{AÑADIR CITA}{\textit{AUTOR}}
+En general, el ser humano se dice un ser libre. Esto sin embargo se puede analizar desde varios puntos de vista. Existe en fìsica la posibilidad de algo que se llaman los bucles temporales cerrados, en los cuales todas las acciones dentro del bucle se hallan inexorable y necesariamente determinadas para que todas sus relaciones causa-efecto permitan su subsistencia. Si entro por casualidad en un bucle sin saberlo, realizarè una serie finita de movimientos durante mi estancia en el mismo, y cuando salga solamente habrè permitido que mi yo del pasado entre en el mismo bucle, siendo asì de cierta manera causa de mis propias causas. Por otro lado, parece que existe una relaciòn entre la relaciòn causa-efecto, el libre albedrìa, la direccion del tiempo y la entropia. Quizàs no es tan absurda dicha relacion, teniendo en cuenta que somos libres precisamente porque creemos que no existe nada que sea causa de nuestras decisiones, ni que sea determinante de nuestro futuro, por ende de nuestros efectos. Pero a la vez la causa y el efecto tienen una especial relacion con el tiempo, porque en dicha relaciòn la causa va primero y el efecto despuès. 
+
+
+\chapter{La ciencia y el lenguaje}
+\epigraph{\justifying{¿Qué es el lenguaje? ¿Es susceptible de ser analizado matemàticamente?¿hay algo en las ciencias actuales que no sea susceptible de ser analizado mediante algún algoritmo matemático o computacional?
+}}{\textit{Anónimo}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+</pre>
+            </details>
+          </section>
+        </section>
+
+        <section class="section">
+          <div class="section-head">
+            <div>
+              <div class="section-kicker">Vista completa</div>
+              <h2>Capítulos del documento</h2>
+            </div>
+            <p>La sección siguiente conserva la visualización completa del proyecto original.</p>
+          </div>
+          
+    <article class="chapter-card" id="la-ciencia-y-el-ser-humano">
+      <div class="chapter-kicker">Capítulo</div>
+      <h3>La ciencia y el ser humano</h3>
+      
+            <figure class="epigraph">
+              <blockquote>En muchas disciplinas (científicas) el problema no consiste en encontrar una solución particular, sino en combinar muchas de ellas ya conocidas de antemano</blockquote>
+              <figcaption>Juan Flores</figcaption>
+            </figure>
+
+            <figure class="epigraph">
+              <blockquote>La ciencia es para el ser humano, y no el ser humano para la ciencia</blockquote>
+              <figcaption>Albert Einstein</figcaption>
+            </figure>
+      <div class="chapter-body">
+        <p>El ser humano inventó las diferentes ciencias, no al revés. Ahora bien, si este orden es el correcto, entonces el ser humano está por encima de las ciencias. Por ende, las ciencias son un medio o instrumento que nos guía a servirnos mejor del mundo en el que nacimos. Sin embargo, como dijo el Sr Eintein, la supremacía de los tontos no puede ser superada por nadie. Porque en todos las épocas y en todas las naciones han habido hombres y mujeres dispuestas a utilizar todos los medios (incluida la ciencia) para destruir, extinguir, aniquilar y borrar de la faz de la tierra a sus pares. El hombre científico en este sentido debe ser un mártir, alguien que sin importar el régimen político que se imponga en la sociedad esté dispuesto a sostener la verdad o morir en su lugar. Porque para el científico la ciencia es el medio supremo que hemos recibido y creado para ayudarnos a nosotros mismos, y nunca aceptaría que se use como medio de opresión, humillación o degradación de nuestra propia dignidad con que hemos sido investidos por naturaleza. En este sentido decimos que el ser humano no fue creado para la ciencia, porque la ciencia no puede ser beneficiada por nosotros, como si necesitase algo de nuestra mano. En cambio nosotros sí necesitamos de ella, aprender de ella y mirar mediante ella el inmenso cosmos del cual somos una pequeña parte.</p>
+<p>El ser humano no es para la ciencia, sino la ciencia para el ser humano se parece a las frases &quot;el hombre no fue hecho para el sàbado, sino el sàbado para el hombre&quot; o &quot;no fue el hombre hecho para la mujer, sino la mujer para el hombre&quot;. Sin embargo, debemos decir de manera màs precisa: el hombre no es sin la ciencia, ni la ciencia sin el hombre. El hombre no es sin la religiòn ni la religiòn sin el hombre, asì como la mujer no es sin el hombre ni el hombre sin la mujer.</p>
+      </div>
+    </article>
+
+    <article class="chapter-card" id="la-cercania-de-la-ciencia">
+      <div class="chapter-kicker">Capítulo</div>
+      <h3>La cercanía de la ciencia</h3>
+      
+            <figure class="epigraph">
+              <blockquote>Un espíritu científico no puede sentir timidez o tener reparos cuando se está tratando de la cruda realidad</blockquote>
+              <figcaption>Monique Wittig</figcaption>
+            </figure>
+      <div class="chapter-body">
+        <p>Los científicos pueden parecer crudos (incluso fanáticos) cuando defienden lo que ellos consideran hechos científicos. Pero más que defender la verdad, deberían defender a las personas de la desinformación. Porque como dijo Nietzche la verdad no es tan débil que necesite de alguien que la defienda. Pero sin embargo, el conocimiento de las personas que ignoran estos hechos las hacen completamente indefensas y frágiles en un mundo que continuamente crece en tecnología, pero también en crueldad, robo y desenfreno por medio de ella. Como dije antes, existen y existirán hombres rapaces que están dispuestos a devorar a los inocentes e ingenuos, hombres que, resisten por lo general lo que se considera</p>
+      </div>
+    </article>
+
+    <article class="chapter-card" id="la-ciencia-trabaja-bajo-paradigmas">
+      <div class="chapter-kicker">Capítulo</div>
+      <h3>La ciencia trabaja bajo paradigmas</h3>
+      
+            <figure class="epigraph">
+              <blockquote>Rechazar un paradima sin sustituirlo simultáneamente por otro es rechazar la ciencia misma</blockquote>
+              <figcaption>Thomas Kuhn</figcaption>
+            </figure>
+      <div class="chapter-body">
+        
+      </div>
+    </article>
+
+    <article class="chapter-card" id="existen-muchas-ciencias">
+      <div class="chapter-kicker">Capítulo</div>
+      <h3>Existen muchas ciencias</h3>
+      
+            <figure class="epigraph">
+              <blockquote>La depreciación de los hechos históricos está profundamente arraigada, y probablemente de manera funcional, en la ideología de la profesión científica, la misma profesión que otorga el mayor valor a los detalles fácticos de otro tipo</blockquote>
+              <figcaption>Thomas Kuhn</figcaption>
+            </figure>
+      <div class="chapter-body">
+        <p>He escuchado varias cosas en mi vida universitaria: &quot;yo querìa estudiar dicha carrera&quot;, &quot;me cargan las personas que menosprecian a la ingenierìa elèctrica, como si fuera poca cosa, como si no tuviera valor&quot;, &quot;en mi trabajo llego a irritarme cuando me preguntan en tono menospreciativo ¿no eres quìmico farmacèutico? cuando en realidad soy ingeniero quìmico&quot;. Muchas de estas cuestiones y otras anàlogas me ha llevado a concluir que entre las personas que no estudian otra carrera diferente de la suya misma tienen prejuicios en contra de las mismas, y que, en general justifican a priori su decisiòn de haber estudiado la carrera que eligieron porque en el estado actual de su desarrollo, ya sea en el conocimiento que hallan o en el trabajo que obtienen de ella, hallan placer en sus frutos. Reflexionando con un amigo, notamos que en general las personas menosprecian cosas de las cuales carecen de conocimiento. Asì, por ejemplo, notamos que las personas que dicen &quot;¿no tienes novia a tu edad?&quot; o &quot;¿no has buscado trabajo?&quot; menosprecian muy a menudo a las personas que han terminado su carrera universitaria o bien han obtenido conocimiento de ella. Y es que en las conversaciones con dichas personas se refleja su pensamiento, el cual consiste en que si no puedo demostrar tener algo o como menos, tener algo con lo cual compararme con los demas, o tambièn mostrar alguna posesiòn (como novia, mi auto, mi trabajo o mi dinero o mi fama en redes sociales), carezco de valor como persona. Sin embargo, mi punto de vista es el siguiente: aprecio y le doy el valor que merece a cada persona, independiente de su carrera, trabajo, estado relacional, etc. Y No por eso dejo de valorar las carreras de dichas personas, trabajos o estados de relaciòn. Porque valoro sus carreras, por muy diferentes que parezcan en nivel de academicismo o de reconocimiento.</p>
+<p>En general, asì como hay muchos trabajos, hay muchas ciencias dedicadas a muchos de ellos. Y asì como hay muchas ciencias hay muchos paradigmas que trabajan dentro de cada una de ellas. Como todas son esferas diferentes, todas son vàlidas y aplicables desde cierto punto de vista. Sin embargo, como se ha dicho muchas veces, el mundo cientìfico tiende o tenderà a una unificaciòn de conceptos o como menos, de paradigmas. Por lo tanto, podemos decir que las ciencias aùn se hallan en su estado embrionario.</p>
+<p>Me he percatado tambièn de que en la antiguedad las personas que se dedicaban a las ciencias o tenìan mucho apoyo econòmico, o escaso. En la actualidad sucede lo mismo, porque estudiar ingenierìa no es lo mismo que estudiar una carrera cientìfica, que en general requiere mayor cantidad de tiempo para obtener una posiciòn laboral estable. En la antiguedad los astrònomos por ejemplo, eran patrocinados en cuanto a sus trabajos por reyes o por personas muy ricas. Y no es muy diferente en la actualidad. Como se solìa perseguir en ocasiones a los que tenìan un nuevo descubrimiento en sus manos, a veces suele suceder en la actualidad, o bien es ignorado y dejado su mèrito en el olvido.</p>
+      </div>
+    </article>
+
+    <article class="chapter-card" id="la-ciencia-de-los-cielos">
+      <div class="chapter-kicker">Capítulo</div>
+      <h3>La ciencia de los cielos</h3>
+      
+            <figure class="epigraph">
+              <blockquote>Pero cuál es el numero de estos movimientos [de astros] es lo que debemos preguntar a aquella de las ciencias matemáticas que más se aproxima a la filosofía; es decir, a la astronomía</blockquote>
+              <figcaption>Aristóteles</figcaption>
+            </figure>
+
+            <figure class="epigraph">
+              <blockquote>La astronomía es una ciencia hecha del material con el que se forjan los sueños</blockquote>
+              <figcaption>Anónimo</figcaption>
+            </figure>
+      <div class="chapter-body">
+        <p>Mientras màs se ha desarrollado el mùsculo de las matemàticas en el curso de la historia, cuanto màs se ha acercado esta a las ciencias en general. Porque es evidente que a medida que las matemàticas se desarrollaron màs profundamente en demostraciones, teoremas, hipòtesis, etc. cuanto màs acercaron la posibilidad de describir cuantitativamente casi todas las cosas que suceden en nuestra modernidad. Y como todas las ciencias parecen describir casi todos los fenòmenos fìsicos, parece ser que las matemàticas vienen a ser particularmente de todas ellas su fundamento: geologìa, astronomìa, fìsica, biologìa, quìmica, etc. Tomemos el caso de astronomìa: sin las matemàticas es imposible la formulaciòn de leyes o patrones entre los cuales estàn: las propias fuerzas o las partìculas con sus fenòmenos respectivos. Entre las fuerzas contamos: la ley de gravitaciòn universal, la teorìa de la relatividad especial y general, etc.</p>
+      </div>
+    </article>
+
+    <article class="chapter-card" id="los-limites-de-la-ciencia">
+      <div class="chapter-kicker">Capítulo</div>
+      <h3>Los límites de la ciencia</h3>
+      
+            <figure class="epigraph">
+              <blockquote>Indudablemente, cada uno es dueño de crear hipótesis a su gusto, pero no deben tocarse los límites de lo imposible</blockquote>
+              <figcaption>Aristóteles</figcaption>
+            </figure>
+
+            <figure class="epigraph">
+              <blockquote>La ciencia no puede resolver el misterio último de la naturaleza. Y eso se debe a que, en última instancia, nosotros mismos formamos parte de la naturaleza y, por lo tanto, formamos parte del misterio que intentamos resolver</blockquote>
+              <figcaption>Max Planck</figcaption>
+            </figure>
+
+            <figure class="epigraph">
+              <blockquote>Los científicos esperan estar equivocados, los políticos esperan estar en lo correcto.</blockquote>
+              <figcaption>Cesar Fuentes</figcaption>
+            </figure>
+      <div class="chapter-body">
+        <p>El mundo tiene su fin, o al menos eso predican muchas teorías del fin del universo. Si es así, que el universo tiene un desenlace, entonces nosotros y por consiguiente nuestras ciencias tendrán inevitablemente un fin. Por otro lado, las ciencias no pueden demostrar ni comprender todos los fenómenos del universo, porque las matemáticas (la reina de las ciencias, Friedrich Gauss) que son más precisas que todas las demás no pueden hacerlo y por consiguiente mucho menos todas las demás.</p>
+<p>Sin lugar a dudas, en el pasado se consideraban hazañas del presente como imposibles. En general, con el cambio de conceptos y con la incorporaciòn de nuevas tecnologìas siempre es posible considerar algo posible que anteriormente era imposible, que ni si quiera formaba parte de los sueños de las personas. Asì, por ejemplo, para Aristòteles hubiera sido absolutamente absurdo visitar una vez la luna, objeto celeste que èl consideraba perfecto e inmutable, como todos los demàs objetos celestes. Tambièn, para los primeros cientìficos quizà hubiera sido imposible creer o llegar a creer, que el ser humano lograrìa algùn dìa volar o sumergirse en las profunidades de los ocèanos.</p>
+<p>No todo lo que es posible, es necesario, ni tan solo real. Porque lo que es real, no siempre es necesario, pero lo que es necesario siempre es real. Asì, metafìsica/ontològicamente hablando, es posible que una teorìa se adecùe a los datos que tenemos sobre un fenòmeno, pero sin embargo, no se sigue de ahì que dicha teorìa sea verdadera. Bien porque no tenemos todos los datos, o bien porque los datos estàn incorrectamente interpretados, o incorrectamente medidos. Por lo tanto, una teorìa puede ser calificada como objetiva, y sin embargo, ser incompleta, falsa o incluso ni tan solo una teorìa.</p>
+<p>Es interesante que existe entre algunos cientìficos el deseo de conocer una teorìa a partir de un conjunto pequeño de axiomas o principios que pueda explicar de una manera matemàticamente simple todos los fenòmenos del universo. Incluso dirìa que dichas personas querrìan que dicha teorìa fuese una necesidad ontològica de la naturaleza del universo, es decir, que sì o sì deba dicha teorìa decirnos porquè existen unas constantes fìsicas y no otras en cambio. Ademàs, es necesaria en el sentido de que el mismo universo en el que vivimos es un objeto necesario de la realidad, es imposible que sea de otra manera. Porque o bien el universo existe por azar, o bien por inteligencia, o bien por necesidad. Pero ellos rechazan el que exista por azar por la exacta determinaciòn de las constantes fìsicas, y tambièn la inteligencia porque creen que no puede existir un ser superior. Por lo que les queda solamente que exista el universo por necesidad. Pero hasta donde sabemos, no hay nada que necesite del universo en sì. Porque si el universo no existiera, nada cambiarìa. Porque si no hay universo, no hay nada que exija que el mismo venga a crearse o permanecer. Sin embargo, debemos tener en cuenta que el azar no es causa de nada, sino de manera accidental. Desde cierto punto de vista el azar es nuestra ignorancia de la causa de ciertos fenòmenos, cualitativa o cuantitativa. Pero asignar una causa a un objeto o sujeto desconocido no es otra cosa que tener fe. Asì, por ejemplo, decir que el resultado del lanzamiento de una moneda es por puro azar, cuando sabemos que existen dos resultados posibles, no es sino una demostraciòn de que no sabemos què es lo que causa que exista una dicotomìa en el espacio muestral. Por lo tanto, a priori asumimos que existe una causa que explica la cardinalidad del espacio muestral. Y asumir que existe dicha causa existe sin conocer todos los factores no es otra cosa que tener fe.</p>
+      </div>
+    </article>
+
+    <article class="chapter-card" id="la-poesia-y-la-astronomia">
+      <div class="chapter-kicker">Capítulo</div>
+      <h3>La poesía y la astronomía</h3>
+      
+            <figure class="epigraph">
+              <blockquote>Eramos los elegidos del sol\\ Y no nos dimos cuenta\\ Fuimos los elegidos de la más alta estrella\\ Y no supimos responder a su regalo</blockquote>
+              <figcaption>Vicente Huidobro</figcaption>
+            </figure>
+
+            <figure class="epigraph">
+              <blockquote>Ojitos de las estrellas,\\ de pestañitas inquietas, \\ ¿por qué sois azules, rojos\\ y violetas?</blockquote>
+              <figcaption>Gabriela Mistral</figcaption>
+            </figure>
+      <div class="chapter-body">
+        
+      </div>
+    </article>
+
+    <article class="chapter-card" id="el-legado-cientifico">
+      <div class="chapter-kicker">Capítulo</div>
+      <h3>El legado científico</h3>
+      
+            <figure class="epigraph">
+              <blockquote>Recordamos el pasado pero no el futuro</blockquote>
+              <figcaption>Sean Carroll</figcaption>
+            </figure>
+      <div class="chapter-body">
+        <p>Algo que me llama la atenciòn del ser humano es que casi siempre busca dejar algùn legado, algùn objeto que le permita a sus conocidos recordarle o bien hacer algo que sea recordado por todos. Y es que en general el ser humano es un ser con memoria, y èl mismo siempre ha buscado ser recordado por otros. Màs aùn, le gustarìa recordar siempre que hay alguien que lo recuerda. Y es que todos desean de cierta forma la vida, pero no todas las cosas de la vida, sino solo las cosas necesarias de la misma. Y una de las cosas que ellos consideran necesarias es el recuerdo o la memoria del pasado. Porque podemos a lo màs recordar el pasado (el futuro no puede ser recordado, porque aùn no existe). Y dado que somos seres que viven en conjunto o en relaciòn con otros, buscamos tener algo en comùn con los otros. Y en general buscamos ser aceptados por alguien, aunque sea uno, pero tambièn dicha forma de ser aceptados es residir continuamente en el recuerdo de alguien, ya sea un amigo, familiar, conocido, etc.</p>
+<p>Y tener algo en comùn con dichas personas es posible solo cuando tenemos recuerdos de nuestras vivencias en comùn. De todo lo anterior podemos concluir que queremos que alguien nos recuerde, porque queremos al menos a alguien: a nosotros mismos. Queremos recordarnos a nosotros mismos! pero tambièn en la mayorìa de los casos que nos recuerden. Y sin el recuerdo de nuestro pasado yo, no tiene sentido nada. Porque somos nosotros, y nosotros estamos hechos de nuestro pasado y presente. Pero dado que todos los demas nos pueden recordar solo por el pasado, se sigue que nos importa, y mucho, ser recordados.</p>
+<p>Toda vez que hacemos algo esperamos que alguien haga algo por nosotros de vuelta, como menos, que nos recuerde. Ni si quiera que recuerde que hicimos algo bueno a sus propios ojos, sino que hicimos algo. Y porquè no queremos morir, sino es porque no queremos perder los recuerdos de lo que fue? no es acaso porque sabemos que ser olvidado es lo peor que le puede suceder a alguien? Pero no es peor no saber si me recuerdan? A su vez, toda decepciòn que nos llevamos de alguien en esta vida va acompañada de alguien que nos &quot;olvidò&quot;. Asì, decimos que &quot;un amigo se olvidò de su promesa&quot;, que el &quot;estado se olvidò de los pobres&quot;, y en fin, &quot;que Dios se olvidò de su mundo&quot;, cuando decimos que estamos triste. No existe nada màs aterrador que el olvido para la mente de alguien que ama pensar. Por eso, el que ya perdiò por otros motivos su propòsito en esta vida, puede decir: &quot;ya no quiero pensar, solo quiero olvidar&quot;.</p>
+<p>Y en general, el ser humano busca ser recordado, que alguien conozca una porciòn de sus propios pensamientos. Asì, escriben libros, edifican casas o edificios a sus nombres, crean fundaciones, y toda una serie de objetos por medio de los cuales pretenden inmortalizar su propia actividad. Y todas las comunidades cientìficas no son una excepciòn. Porque los cientìficos buscan varias cosas, entre ellas escribir artìculos con sus descubrimientos, crear instituciones de investigaciòn con el nombre de cientìficos reconocidos, darle homenaje a ciertos descubridores por medio de nombres de fenòmenos, etc.</p>
+      </div>
+    </article>
+
+    <article class="chapter-card" id="las-leyes-y-la-ciencia">
+      <div class="chapter-kicker">Capítulo</div>
+      <h3>Las leyes y la ciencia</h3>
+      
+            <figure class="epigraph">
+              <blockquote>La ley, al disponer solo de manera general, no puede prever todos los casos accidentales</blockquote>
+              <figcaption>Aristóteles</figcaption>
+            </figure>
+
+            <figure class="epigraph">
+              <blockquote>Los problemas de astronomía son como los problemas de la vida real</blockquote>
+              <figcaption>Francisco Förster</figcaption>
+            </figure>
+      <div class="chapter-body">
+        <p>Seguramente, es de saber que en nuestro mundo existe para cada sociedad un conjunto de leyes que rigen y regulan las relaciones entre los miembros de las mismas. Pero dado que no es posible definir todos los detalles mìnimos por medio de reglas generales, es preciso que, si la ley ha de regular todos los casos, que la misma sea modificada. Asì, casos como &quot;hombre mata a niño&quot;, &quot;hombre quema una casa&quot;, etc. no son claramente categorizables como aquellos casos en los que el delincuente debe pagar o quedar preso por la ley que dice &quot;todo ser humano nace libre, etc.&quot;. Es decir, una ley o proposiciòn como esa, que tiene la intenciòn de ser muy general y en ocasiones ambigua en cuanto a su aplicaciòn, debe ser modificada agregando o quitando porciones de la misma.</p>
+<p>Y mucho màs, sabiendo que el edificio de las ciencias naturales crece dìa a dìa, cuyo conocimiento aumenta y sobreabunda, es necesario que en pro de dicho nuevo conocimiento y nuevas tècnicas o tecnologìas se modifiquen las leyes para el propio beneficio del ser humano. Darè algunos ejemplos: si crea una tecnologìa que permite conocer antes de que suceda un delito, entonces deberìa modificarse ese corpus de leyes o normas que indican que existe plena libertad para que una persona circule libremente por las calles de un paìs. O si se crea un dispositivo que mejora o supera en tiempo de traslado a los del tiempo actual, entonces las leyes que deberìan ser modificadas son las de trànsito. O si se crea un alimento que le permite al ser humano comer una sola vez al dìa, deberìan crearse o abolirse leyes sobre su comercializaciòn, crearse o destruirse ministerios, etc.</p>
+<p>Es decir, en general, deberìan modificarse no solamente por ejemplo en nuestro paìs la constituciòn, sino tambièn toda la estructura de leyes, normas, estatutos o decretos que existen a diferentes niveles.</p>
+      </div>
+    </article>
+
+    <article class="chapter-card" id="la-ciencia-y-dios">
+      <div class="chapter-kicker">Capítulo</div>
+      <h3>La ciencia y Dios</h3>
+      
+            <figure class="epigraph">
+              <blockquote>Porque de otra forma resultaria que Dios y el mundo no existían, puesto que su acción no tiene nada de exterior, sino que permanece concentrada en ellos mismos</blockquote>
+              <figcaption>Aristóteles</figcaption>
+            </figure>
+      <div class="chapter-body">
+        <p>Parece que el universo por definición es aquello en lo que podemos percibir o medir algun efecto. Por eso, se dice que el universo observable es todo lo que podemos ver, porque lo que está más allá nunca nos podrá comunicar algún efecto como causal.</p>
+<p>Dios esta por fuera de la ciencia, o en contra, o bien no està en contra. En todo caso, parece que Dios tiene preferencia por mostrarse en todos los fenomenos.</p>
+      </div>
+    </article>
+
+    <article class="chapter-card" id="la-ciencia-y-las-matematicas">
+      <div class="chapter-kicker">Capítulo</div>
+      <h3>La ciencia y las matemáticas</h3>
+      
+            <figure class="epigraph">
+              <blockquote>Por lo tanto, está claro que la naturaleza del número no es la que le dan los filósofos que le consideran como un ser independiente [...] el número no es, pues, una causa eficaz, y ni el número en general ni el compuesto de unidades son la materia constituyente, o la esencia, o forma de las cosas; voy más lejos: no es ni tan solo la causa final</blockquote>
+              <figcaption>Aristóteles</figcaption>
+            </figure>
+
+            <figure class="epigraph">
+              <blockquote>El milagro de la idoneidad del lenguaje de las matemáticas para la formulación de las leyes de la física son un regalo maravilloso que no podemos entender ni merecer</blockquote>
+              <figcaption>Eugene Wigner</figcaption>
+            </figure>
+      <div class="chapter-body">
+        <p>Si los numeros son parte de la realidad o no lo son, es algo que ha sido parte del debate filosofico de muchos autores.</p>
+<p>Los numeros, si bien no son objetos o sujetos que pueden causar o ser causados, sin embargo, son conceptos que describen absolutamente con mucha precisiòn ciertas relaciones de objetos que en efecto existen.</p>
+<p>En las ciencias modernas, existe la suposicion de que todos los fenomenos son susceptibles de ser analizados madiante metodos matematicos o funciones. Asi, la inteligencia aritifical, los fenomenos fisicos, quimicos, biologicos, etc.</p>
+      </div>
+    </article>
+
+    <article class="chapter-card" id="la-ciencia-y-las-mujeres">
+      <div class="chapter-kicker">Capítulo</div>
+      <h3>La ciencia y las mujeres</h3>
+      
+            <figure class="epigraph">
+              <blockquote>Algo tranquilizador es que en algunos países hay una gran proporción de mujeres que hacen astronomía, física y ciencia en general. Demuestra que las mujeres pueden desempeñarse bien en estas materias; que los cerebros de las mujeres pueden hacer ciencia perfectamente bien, pero el problema es que las mujeres mayores cuentan a las mujeres jóvenes cosas como: No deberías hacer física. No disfrutarías de un tema como ese porque es de hombres, no lo hagas</blockquote>
+              <figcaption>Jocelyn Bell Burnell</figcaption>
+            </figure>
+      <div class="chapter-body">
+        <p>En el mundo en el que vivimos, no siempre el que tiene más mérito, talento o habilidad es el que más reconocimiento recibe, ni tan si quiera a veces reconocimiento alguno por sus contemporáneos. Como tampoco en muchos trabajos actualmente hombres o mujeres reciben el puesto que merecen, y otros hombres y mujeres reciben el puesto que no merecen. Así también, tenemos casos de científicos que no fueron premiados o reconocidos por sus descubrimientos o teorías. Esto nos da a entender que en la vida tener reconocimiento no debe definir nuestra identidad. El caso más célebre en mi opinión es el de Jocelyn Bell Burnell, astrónoma que en el año 1967 descubrió un nuevo objeto celeste: los Púlsares. Y aunque fue así, los que recibieron el premio nobel en 1974 por dicho descubrimiento fueron sus dos profesores guías (dos hombres por lo demás): Antony Hewish y Martin Ryle. Por eso incluso algunos de sus pares le llamaban el premio No-Bell (en alusión a su apellido). Antes las mujeres pensaban que no podrían lograr algún éxito en las ciencias, quizás por el mismo hecho del reconocimiento, porque el reconocimiento se considera como una especie de éxito en dichas áreas.</p>
+<p>Aquello que es lo primero en suceder, siempre se considera de mayor importancia, porque es lo que causa una ruptura en alguna serie de eventos. Así, para nosotros es importante la primera vez que alguien observaba un objeto celeste (una estrella, cometa, planeta, etc.), la primera vez que alguien descubría un nuevo continente (como en el caso de América), la primera vez que alguien pisaba la luna, etc. Y en el caso de las mujeres, al ser el género que siempre ha sido menospreciado, el género que ha vivido a la sombra de los logros del hombre, toda vez que se halla una primera vez, se dice que es un logro. Como toda vez que se dice que es la primera mujer en &quot;ir a la luna&quot;, &quot;sufragar&quot;, &quot;ser presidenta&quot;, &quot;obtener un título universitario&quot;. Por lo que la irrupción de la mujer en cualquier trabajo en general fue, es y será algo que marca el nivel de igualdad entre mujeres.</p>
+<p>El que antes la mujer no pudiera sufragar indica que no se consideraba como un ser político, el que antes ellas no pudieran realizar algún trabajo de investigación indica que no eran consideradas seres pensantes, el que no recibieran reconocimiento alguno por parte de las sociedades implica que no eran consideradas como seres con habilidad alguna (exceptuando quizás habilidad para el mal). Pero como dijo John Stuart Mill, para que la mujer pueda ser feliz, debe lograr ser independiente del hombre en todo sentido, o como menos, tener dicha oportunidad. Y ser independiente del hombre implica que su voto es solo suyo, que su investigación es dirigida solo por ella o que no necesita a un hombre para recibir reconocimiento público. Dicho de otra manera, con el avance del tiempo se puede decir que la mujer ha logrado depender y necesitar cada vez menos del hombre para subsistir.</p>
+<p>Actualmente me llama la atencion el hecho de que todos hablan del sesgo de gènero, como si fuera el ùnico que existe. Aquì se muestra un estracto de una periodista que me llamó mucho la atención.</p>
+<p>Benjamín Rivas Beltrán, grábense ese nombre. Tiene 18 años, estudió en un liceo de Curanilahue y es puntaje nacional en matemáticas.</p>
+<p>Ya es un mérito no viniendo de los típicos colegios. Pero además, Benjamín vive con parálisis cerebral. La parte medio llena del vaso: en Chile ha aumentado la cantidad de personas con discapacidad que ingresan a la educación superior y también las que la terminan. La parte vacía del vaso es que no llegan al 10\ Las ponemos en esa situación porque no hacemos las adecuaciones básicas. Si hay dos libros, uno en braille y otro tradicional, la persona ciega y usted pueden leer. Pero pongo en una situación de discapacidad a quien no ve con los ojos si no le entrego ese libro en relieve. Es cuestión de perspectiva, porque si se apaga la luz… y están los dos libros, ¿quién es ciego ahí? Usted. Benjamín ha tenido que luchar en un país que jamás pensaría en dejar de usar el cobre, pero que se da el lujo de perderse talentos como él, que quedan en el camino por falta de recursos o apoyo. Esto no es buenismo, es un tema de DD. HH. Nos parecería escandaloso hacer colegios o universidades sin baños, pero aceptamos que abran sin equipos profesionales de inclusión. En Chile no sobran los Benjamines. Nadie sobra, pero intuyo que, como marchan poco las personas con discapacidad, rara vez son prioridad. Este será un mejor país el día en que una discapacidad sea un diagnóstico y no un pronóstico de lo que lograrás.&quot; Mónica Rincòn</p>
+<p>Algo que me llama la atencion es que antiguamente se solia creer que porque alguien pueda tener sexo, es lìcito que lo tenga (por ejemplo, que las mujeres tengan sexo cuando cumplen 12 a 13 años). Pero analizandolo bien, si alguien tiene las capacidades fìsicas para robar, no se deduce de ello que sea lìcito hacerlo. Ni tampoco que porque pueda trabajar, deba hacerlo. O porque pueda prostituirse sea bueno, benèfico o lìcito. Un niño, y en particular una niña, no debe ni deberìa ser puesto por la sociedad en una situaciòn en la cual necesite tener sexo, trabajar o prostituirse o robar siendo una niña. Porque el niño y la niña son el principio de la vida propia suya, asì como de la vida en comunidad. Por lo que ponerla en una situaciòn asì a temprana edad implica cohartar sus habilidades cuyo tiempo tendrìa que invertir en actividades ilìcitas y perversas.</p>
+      </div>
+    </article>
+
+    <article class="chapter-card" id="la-observacion-en-la-ciencia">
+      <div class="chapter-kicker">Capítulo</div>
+      <h3>La observación en la ciencia</h3>
+      
+            <figure class="epigraph">
+              <blockquote>Según la mecánica cuántica, lo que podemos observar del mundo es sólo un minúsculo subconjunto de lo que realmente existe</blockquote>
+              <figcaption>Sean Carroll</figcaption>
+            </figure>
+      <div class="chapter-body">
+        <p>Según lo que he podido apreciar del mundo de las ciencias, hay una enormidad de cosas que no podemos ver pero de las cuales tenemos certeza de su existencia: el tiempo, el espacio, la función de onda de la mecánica cuántica (y todos los &quot;observables&quot; de la misma teoría), los agujeros negros, el Big Bang, el centro de planetas/estrellas/etc. Analizaré a continuación cada uno de los objetos mencionados (si es que son objetos propiamente hablando).</p>
+<p>Tiempo y Espacio</p>
+<p>El tiempo, como se ha dicho a veces, forma parte del continuo espacio-tiempo descrito por la teoría de la gravedad de Einstein, por lo que con su par el espacio son considerados como entes reales. Además, es claro que no podemos ver el tiempo, porque a lo más podemos observar las cosas que suceden en el espacio. Y aún así no podemos observar el espacio, porque el tejido espacial no es visible por sí mismo, sino su contenido. Así podemos decir que en general ni el tiempo ni el espacio son visibles, sino solo lo que aquéllos contienen: sucesos y objetos (porque en el tiempo hay sucesos y en el espacio hay objetos).</p>
+<p>La función de onda</p>
+<p>La función de onda y, en general, todos los objetos matemáticos que se usan en la teoría de la mecánica cuántica son objetos que se consideran algo real, porque si no fuera real, no tendrían efecto en el mundo. Pero además se considera evidentemente que ninguna función matemática es visible, porque son objetos abstractos o ideas, que a pesar de ser tales, son reales y tienen efectos empíricos. Por lo tanto, podemos concluir que la función de onda no es visible (porque es una función).</p>
+<p>Los agujeros negros</p>
+<p>Como se ha repetido muchas veces, lo que nosotros vemos no es el agujero negro como tal (como en las imágenes de los años 2019 y 2021) sino su sombra (o para ser más rigurosos, la sombra de su alrededor). Y para entender esto es necesario definir el agujero negro como aquella región del espacio y del tiempo en el cual la curvatura del espacio es tal que la luz no es suficiente para escapar más allá de su horizonte de eventos (algo así como el límite que marca su volumen). Pero dado que la sombra por definición es la ausencia de luz, al haber ausencia de luz en la región donde deberíamos ver al agujero negro, concluimos que su imagen es una sombra (así como no hay problema en decir que la sombra de una persona es en realidad una imagen).</p>
+<p>El Big-Bang</p>
+<p>Lo que de antaño se utilizaba para denostar una teoría sobre el origen del cosmos, hoy en día es generalmente aceptado entre muchas comunidades científicas. Un hito clave para entender porqué no es visible es el de que en la medida en que miramos objetos (como galaxias, estrellas, polvo interestelar, etc.) más lejanos (alejados a millones de kilómetros, unidades astronómicas, pársecs, etc.), en realidad estamos viendo cómo eran dichos objetos en el pasado. Por lo que, si vemos objetos muy lejanos en realidad estamos viendo objetos muy antiguos. Pero el universo no quiere que miremos más allá del límite en el cual pasaron 380.000 años después del Big Bang, porque antes de eso los fotones que formaban la luz del universo no podían &quot;volar&quot; mucho espacio sin chocar o ser absorbidos. Y antes de eso nada podemos ni podremos ver nunca, porque lo que pasó en el pasado no puede ser modificado. En pocas palabras, el Big Bang es el primer instante del universo, y está en el pasado. Aquí tenemos otro momento del mundo que jamás veremos, no importa cuán profundo sea nuestro conocimiento, ni cuán avanzados estemos como civilización.</p>
+<p>Centro de planetas o estrellas:</p>
+<p>El centro de estrellas y planetas (algunos de los cuales se consideran estrellas fallidas, como aquellos que están compuestos casi enteramente de gas y/o polvo) no son posibles de ver. Lo único que disponemos actualmente es de uno o más marcos teóricos que nos dicen bajo cierta cantidad de suposiciones y evidencias que todos los planetas que son esféricos, tienen un centro caliente (por lo general, el de las estrellas de millones de grados celsius y el de los planetas como la tierra de miles de grados). Pero debido a dichas elevadas temperaturas y a la profundidad inmensa (en la tierra seis mil kilómetros de radio o una vez y media el largo de Chile) no es posible acercarnos con la tecnología actual a ver cómo es su interior.</p>
+<p>Nube de Oort, enanas rojas, estrellas de poblacion tipo III, energia oscura, materia oscura.</p>
+<p>En general, en la vida cotidiana hay miles (una infinidad) de cosas que no hemos visto personalmente pero que creemos que existen o existieron: nuestro tatara-abuelo (y toda nuestro árbol genealógico), casi ocho mil millones de seres humanos (que nunca hemos personalmente visto), y voy más allá: nuestro propio cerebro (incluidos la mayoria de nuestros órganos internos, y que sin embargo, tenemos ciencia cierta de que existen por sus efectos, e incluidos también todos sus elementos componentes, millones de células, microbiota, organelos, átomos, etc.).</p>
+<p>En definitiva, si no podemos ver todas las cosas del presente, mucho menos podemos ver las todas las cosas del pasado, y mucho menos en consecuencia, las cosas o eventos del futuro. Podemos decir que el intento constante de ciertos grupos de personas por negar ciertos hechos históricos porque simplemente no los vieron o porque no los pueden repetir, es negar no solo la historia, sino el mismo fundamento de muchas ciencias, entre ellas la astronomía y la arqueología. Porque dichas dos ciencias están hechas de tal manera que no necesitan experimentos repetibles, debido a que por un lado no podemos repetir el universo en sí (en el caso de la astronomía) ni pedirle a un ser vivo que viva y vuelva a morir para ver cómo eran las condiciones en las que murió. Podemos calificar dicho espíritu de anticientífico.</p>
+<p>Dicho espíritu es el mismo que tiende a relativizar el cambio climático, las crisis sanitarias (el covid 19 por ejemplo), los aportes de las matemáticas (sobre todo en la juventud) y más bien tiende a creer en fábulas como el terraplanismo, el creacionismo literal, los iluminatis, fenómenos ovni (y todo lo relacionado a criaturas fantásticas de ese género, como el hombre de las nieves, etc.), etc. La negación no es solo de lo que no se ve, sino de lo que no se siente, huele, oye, piensa, escucha o experimenta. Pero incluso esto, como dijimos más arriba, va más allá de lo que nos permite la o las ciencias.</p>
+<p>Una paradoja es un evento que reviste algo de contradictorio en apariencia, un misterio es un evento cuya veracidad queda velada, pero no su verdad o su existencia. Asì, es una paradoja la del gato de Schrodinger o la del abuelo, pero un misterio còmo se crea una partìcula o destruye la misma, cuàl es el valor de verdad de una proposiciòn indemostrable. La paradoja y el misterio ambos son de naturaleza subjetiva, porque desde cierto punto de vista la paradoja es algo que a una persona le parece contradictorio, es decir, que es falso y verdadero, y en el caso del misterio es un caso que a una persona le parece imposible de conocer algùn mecanismo o su propia veracidad. La paradoja parece falso (y por ende contradictorio) pero cuya demostraciòn se mantiene oculta (en este caso, se exhibe cierta ignorancia de que un argumento puede no ser necesariamente vàlido), el misterio es algo que nos parece verdadero pero cuya demostraciòn es oculta (en este caso, se exhibe cierta ignorancia de que una proposiciòn puede ser verdadera aùn si no sabemos còmo demostrarla). La paradoja tiene que ver con la ignorancia de la necesidad lògica de un argumento, mientras que el misterio tiene que ver con la ignorancia de la existencia de dicho argumento. Por ejemplo, la paradoja del abuelo es paradoja porque se ignora que no necesariamente por viajar al pasado y matar a mi abuelo me muero, y un misterio como el de la muerte de una persona existe por la ignorancia de la existencia del asesino de dicha persona. Una paradoja se dice de algo que tiene que ver con la contradiccion de algo, un misterio con una caja negra cuyo contenido es desconocido.</p>
+      </div>
+    </article>
+
+    <article class="chapter-card" id="la-ciencia-y-la-libertad-de-pensamiento">
+      <div class="chapter-kicker">Capítulo</div>
+      <h3>La ciencia y la libertad de pensamiento</h3>
+      
+            <figure class="epigraph">
+              <blockquote>AÑADIR CITA</blockquote>
+              <figcaption>AUTOR</figcaption>
+            </figure>
+      <div class="chapter-body">
+        <p>En general, el ser humano se dice un ser libre. Esto sin embargo se puede analizar desde varios puntos de vista. Existe en fìsica la posibilidad de algo que se llaman los bucles temporales cerrados, en los cuales todas las acciones dentro del bucle se hallan inexorable y necesariamente determinadas para que todas sus relaciones causa-efecto permitan su subsistencia. Si entro por casualidad en un bucle sin saberlo, realizarè una serie finita de movimientos durante mi estancia en el mismo, y cuando salga solamente habrè permitido que mi yo del pasado entre en el mismo bucle, siendo asì de cierta manera causa de mis propias causas. Por otro lado, parece que existe una relaciòn entre la relaciòn causa-efecto, el libre albedrìa, la direccion del tiempo y la entropia. Quizàs no es tan absurda dicha relacion, teniendo en cuenta que somos libres precisamente porque creemos que no existe nada que sea causa de nuestras decisiones, ni que sea determinante de nuestro futuro, por ende de nuestros efectos. Pero a la vez la causa y el efecto tienen una especial relacion con el tiempo, porque en dicha relaciòn la causa va primero y el efecto despuès.</p>
+      </div>
+    </article>
+
+    <article class="chapter-card" id="la-ciencia-y-el-lenguaje">
+      <div class="chapter-kicker">Capítulo</div>
+      <h3>La ciencia y el lenguaje</h3>
+      
+            <figure class="epigraph">
+              <blockquote>¿Qué es el lenguaje? ¿Es susceptible de ser analizado matemàticamente?¿hay algo en las ciencias actuales que no sea susceptible de ser analizado mediante algún algoritmo matemático o computacional?</blockquote>
+              <figcaption>Anónimo</figcaption>
+            </figure>
+      <div class="chapter-body">
+        
+      </div>
+    </article>
+        </section>
+      </div>
+
+      <aside class="panel toc">
+        <div class="section-kicker">Índice</div>
+        <h2>Capítulos</h2>
+        <nav>
+          <a href="#la-ciencia-y-el-ser-humano">La ciencia y el ser humano</a><a href="#la-cercania-de-la-ciencia">La cercanía de la ciencia</a><a href="#la-ciencia-trabaja-bajo-paradigmas">La ciencia trabaja bajo paradigmas</a><a href="#existen-muchas-ciencias">Existen muchas ciencias</a><a href="#la-ciencia-de-los-cielos">La ciencia de los cielos</a><a href="#los-limites-de-la-ciencia">Los límites de la ciencia</a><a href="#la-poesia-y-la-astronomia">La poesía y la astronomía</a><a href="#el-legado-cientifico">El legado científico</a><a href="#las-leyes-y-la-ciencia">Las leyes y la ciencia</a><a href="#la-ciencia-y-dios">La ciencia y Dios</a><a href="#la-ciencia-y-las-matematicas">La ciencia y las matemáticas</a><a href="#la-ciencia-y-las-mujeres">La ciencia y las mujeres</a><a href="#la-observacion-en-la-ciencia">La observación en la ciencia</a><a href="#la-ciencia-y-la-libertad-de-pensamiento">La ciencia y la libertad de pensamiento</a><a href="#la-ciencia-y-el-lenguaje">La ciencia y el lenguaje</a>
+        </nav>
+        <div class="footer">
+          Sitio generado desde datos públicos de GitHub y el archivo local <code>overleaf_project/main.tex</code>.
+          Para actualizar la vista, ejecuta <code>node build_site.mjs</code>.
+        </div>
+      </aside>
+    </section>
+  </main>
+</body>
+</html>
