@@ -5,18 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Sitio personal de Diego Espinoza con carrusel 3D interactivo, foto, libro, repositorios y trabajo actual." />
   <title>Diego Espinoza | Orbit</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;family=VT323&amp;display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: dark;
-      --bg: #050713;
-      --text: #f5f7fb;
-      --muted: rgba(245, 247, 251, 0.72);
-      --line: rgba(255, 255, 255, 0.10);
-      --panel: rgba(9, 13, 27, 0.58);
-      --panel-strong: rgba(11, 17, 35, 0.55);
-      --accent: #8fd3ff;
-      --accent-2: #ffb15a;
+      --bg: #000000;
+      --text: #00ff41;
+      --muted: rgba(0, 255, 65, 0.65);
+      --line: rgba(0, 255, 65, 0.15);
+      --panel: rgba(9, 13, 27, 0.82);
+      --panel-strong: rgba(11, 17, 35, 0.85);
+      --accent: #00ff41;
+      --accent-2: #00ff41;
       --shadow: 0 28px 90px rgba(0, 0, 0, 0.40);
     }
 
@@ -24,35 +24,13 @@
     html, body { height: 100%; }
     body {
       margin: 0;
-      font-family: "Manrope", sans-serif;
+      font-family: "VT323", monospace;
       color: var(--text);
       background: var(--bg);
       overflow: hidden;
       position: relative;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -3;
-      background:
-        radial-gradient(circle at 18% 16%, rgba(109, 173, 255, 0.16), transparent 26%),
-        radial-gradient(circle at 82% 22%, rgba(255, 177, 90, 0.14), transparent 24%),
-        url("assets/galaxy-hero.jpg") center center / 100% 100% no-repeat;
-      filter: brightness(0.9) saturate(1.18) contrast(1.05);
-      transform: scale(1.05);
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      background:
-        linear-gradient(180deg, rgba(4, 6, 12, 0.12), rgba(4, 6, 12, 0.68)),
-        radial-gradient(circle at 50% 20%, rgba(255, 255, 255, 0.08), transparent 34%);
-    }
 
     a { color: inherit; text-decoration: none; }
 
@@ -87,15 +65,15 @@
       border-radius: 50%;
       display: grid;
       place-items: center;
-      background: linear-gradient(135deg, rgba(143, 211, 255, 0.24), rgba(255, 177, 90, 0.18));
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      font-family: "Space Grotesk", sans-serif;
+      background: linear-gradient(135deg, rgba(0, 255, 65, 0.24), rgba(0, 255, 65, 0.12));
+      border: 1px solid rgba(0, 255, 65, 0.12);
+      font-family: "VT323", monospace;
       font-weight: 700;
       letter-spacing: -0.04em;
     }
 
     .brand-copy { display: grid; line-height: 1.08; }
-    .brand-copy strong { font-size: 0.96rem; }
+    .brand-copy strong { font-size: 0.96rem; color: #ffffff; }
     .brand-copy span { color: var(--muted); font-size: 0.8rem; }
 
     .hint {
@@ -143,13 +121,13 @@
       position: absolute;
       left: 50%;
       top: 50%;
-      width: clamp(260px, 26vw, 420px);
-      min-height: clamp(180px, 20vw, 300px);
-      border-radius: 26px;
-      padding: 20px 20px 18px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      width: clamp(220px, 22vw, 360px);
+      min-height: auto;
+      border-radius: 22px;
+      padding: 16px 16px 14px;
+      border: 1px solid rgba(0, 255, 65, 0.18);
       background: var(--panel-strong);
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow), 0 0 18px rgba(0, 255, 65, 0.08);
       backdrop-filter: blur(20px);
       transform-style: preserve-3d;
       overflow: hidden;
@@ -158,8 +136,8 @@
     }
 
     .card.active {
-      border-color: rgba(143, 211, 255, 0.32);
-      box-shadow: 0 32px 90px rgba(0, 0, 0, 0.50);
+      border-color: rgba(0, 255, 65, 0.45);
+      box-shadow: 0 32px 90px rgba(0, 0, 0, 0.50), 0 0 28px rgba(0, 255, 65, 0.18);
     }
 
     .card::before {
@@ -169,34 +147,69 @@
       width: 180px;
       height: 180px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(143, 211, 255, 0.10), transparent 66%);
+      background: radial-gradient(circle, rgba(0, 255, 65, 0.08), transparent 66%);
       pointer-events: none;
+    }
+
+    .card-toggle {
+      display: block;
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 0;
+      text-align: left;
+      cursor: pointer;
+      color: inherit;
+    }
+
+    .card-arrow {
+      display: inline-block;
+      font-size: 0.7rem;
+      color: var(--accent);
+      transition: transform 0.3s ease;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .card.expanded .card-arrow { transform: rotate(90deg); }
+
+    .card-body {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease;
+    }
+
+    .card.expanded .card-body {
+      max-height: 700px;
+      opacity: 1;
     }
 
     .card .kicker {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.18em;
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--accent);
     }
 
     .card h2, .card h3 {
-      margin: 10px 0 10px;
-      font-family: "Space Grotesk", sans-serif;
-      line-height: 0.98;
-      letter-spacing: -0.04em;
+      margin: 4px 0 2px;
+      font-family: "VT323", monospace;
+      line-height: 1.1;
+      letter-spacing: 0;
+      image-rendering: pixelated;
     }
 
-    .card h2 { font-size: clamp(1.55rem, 2.2vw, 2.2rem); }
-    .card h3 { font-size: clamp(1.1rem, 1.5vw, 1.45rem); }
+    .card h2 { font-size: clamp(1.8rem, 2.4vw, 2.6rem); color: #ffffff; }
+    .card h3 { font-size: clamp(1.3rem, 1.7vw, 1.7rem); color: #ffffff; }
 
     .card p {
       margin: 0;
-      color: rgba(245, 247, 251, 0.85);
+      color: rgba(0, 255, 65, 0.85);
       line-height: 1.65;
       font-size: 0.96rem;
     }
@@ -208,14 +221,47 @@
       margin-top: 14px;
     }
 
+    .gh-stats {
+      display: flex;
+      gap: 8px;
+      margin: 10px 0 6px;
+    }
+
+    .gh-stat {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(0, 255, 65, 0.07);
+      border: 1px solid rgba(0, 255, 65, 0.18);
+      border-radius: 10px;
+      padding: 6px 4px;
+      gap: 2px;
+    }
+
+    .gh-stat-value {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .gh-stat-label {
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
     .chip {
       display: inline-flex;
       align-items: center;
       min-height: 30px;
       padding: 0 10px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.10);
-      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(0, 255, 65, 0.10);
+      background: rgba(0, 255, 65, 0.06);
       color: var(--muted);
       font-size: 0.8rem;
       font-weight: 600;
@@ -224,11 +270,11 @@
     .photo-card { display: grid; place-items: center; text-align: center; }
 
     .photo {
-      width: 120px;
-      height: 120px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       overflow: hidden;
-      border: 4px solid rgba(255, 255, 255, 0.88);
+      border: 4px solid rgba(0, 255, 65, 0.88);
       box-shadow: 0 18px 44px rgba(0, 0, 0, 0.30);
       margin-bottom: 14px;
       flex: 0 0 auto;
@@ -240,24 +286,24 @@
     .socials { display: flex; justify-content: center; gap: 10px; margin-top: 14px; }
 
     .icon-pill {
-      width: 40px;
-      height: 40px;
+      width: 34px;
+      height: 34px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
       border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.06);
+      background: rgba(0, 255, 65, 0.06);
       transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
     }
 
     .icon-pill:hover {
       transform: translateY(-1px);
-      border-color: rgba(143, 211, 255, 0.34);
-      background: rgba(255, 255, 255, 0.10);
+      border-color: rgba(0, 255, 65, 0.34);
+      background: rgba(0, 255, 65, 0.10);
     }
 
-    .icon { width: 18px; height: 18px; fill: currentColor; }
+    .icon { width: 16px; height: 16px; fill: currentColor; }
 
     .cta-row {
       display: flex;
@@ -274,28 +320,28 @@
       min-height: 38px;
       padding: 0 14px;
       border-radius: 999px;
-      border: 1px solid rgba(143, 211, 255, 0.26);
-      background: rgba(143, 211, 255, 0.10);
+      border: 1px solid rgba(0, 255, 65, 0.26);
+      background: rgba(0, 255, 65, 0.10);
       color: var(--text);
       font-weight: 700;
       font-size: 0.92rem;
     }
 
     .cta.secondary {
-      border-color: rgba(255, 177, 90, 0.24);
-      background: rgba(255, 177, 90, 0.10);
+      border-color: rgba(0, 255, 65, 0.24);
+      background: rgba(0, 255, 65, 0.10);
     }
 
     .rear {
-      color: rgba(245, 247, 251, 0.92);
+      color: rgba(0, 255, 65, 0.92);
       text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
     }
 
     .rear .quote {
       margin-top: 14px;
       padding: 14px 16px;
-      border-left: 3px solid rgba(143, 211, 255, 0.55);
-      background: rgba(143, 211, 255, 0.08);
+      border-left: 3px solid rgba(0, 255, 65, 0.55);
+      background: rgba(0, 255, 65, 0.08);
       border-radius: 14px;
       font-size: 0.95rem;
       line-height: 1.6;
@@ -357,41 +403,48 @@
     }
 
     /* ── Skills card ── */
-    .skill-group { margin-top: 10px; }
+    .skills-groups-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 12px;
+      margin-top: 8px;
+    }
+
+    .skill-group { margin-top: 0; }
 
     .skill-group-label {
       display: block;
-      font-size: 0.70rem;
+      font-size: 0.60rem;
       font-weight: 700;
       letter-spacing: 0.10em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .skill-icons-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 4px;
+      gap: 6px;
+      margin-top: 2px;
     }
 
     .skill-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
-      width: 62px;
+      gap: 3px;
+      width: 40px;
     }
 
     .skill-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(0, 255, 65, 0.16);
       box-shadow: 0 3px 12px rgba(0, 0, 0, 0.40);
       cursor: default;
       transition: transform 150ms ease, box-shadow 150ms ease;
@@ -400,8 +453,8 @@
     }
 
     .skill-icon img {
-      width: 28px;
-      height: 28px;
+      width: 20px;
+      height: 20px;
       object-fit: contain;
       display: block;
       margin: 0 auto;
@@ -413,21 +466,21 @@
       justify-content: center;
       width: 100%;
       height: 100%;
-      font-family: "Space Grotesk", sans-serif;
+      font-family: "VT323", monospace;
       font-weight: 800;
-      font-size: 0.62rem;
+      font-size: 0.52rem;
       letter-spacing: 0.02em;
-      color: #fff;
+      color: var(--text);
       text-align: center;
     }
 
     .skill-name {
-      font-size: 0.62rem;
+      font-size: 0.52rem;
       font-weight: 600;
       color: var(--muted);
       text-align: center;
       line-height: 1.2;
-      width: 62px;
+      width: 40px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -448,10 +501,10 @@
       min-height: 34px;
       padding: 0 14px;
       border-radius: 999px;
-      border: 1px solid rgba(143, 211, 255, 0.28);
-      background: rgba(143, 211, 255, 0.10);
+      border: 1px solid rgba(0, 255, 65, 0.28);
+      background: rgba(0, 255, 65, 0.10);
       color: var(--text);
-      font-family: "Manrope", sans-serif;
+      font-family: "VT323", monospace;
       font-weight: 700;
       font-size: 0.84rem;
       cursor: pointer;
@@ -460,8 +513,8 @@
     }
 
     .fan-trigger:hover {
-      border-color: rgba(143, 211, 255, 0.52);
-      background: rgba(143, 211, 255, 0.18);
+      border-color: rgba(0, 255, 65, 0.52);
+      background: rgba(0, 255, 65, 0.18);
     }
 
     .fan-overlay {
@@ -488,18 +541,18 @@
       height: 58px;
       border-radius: 50%;
       border: 1.5px solid var(--accent);
-      background: rgba(143, 211, 255, 0.10);
+      background: rgba(0, 255, 65, 0.10);
       transform: translate(-50%, -50%);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: "Space Grotesk", sans-serif;
+      font-family: "VT323", monospace;
       font-size: 0.62rem;
       font-weight: 800;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--accent);
-      box-shadow: 0 0 28px rgba(143, 211, 255, 0.18);
+      box-shadow: 0 0 28px rgba(0, 255, 65, 0.18);
       z-index: 2;
     }
 
@@ -515,7 +568,7 @@
     }
 
     .fan-lines line {
-      stroke: rgba(143, 211, 255, 0.14);
+      stroke: rgba(0, 255, 65, 0.14);
       stroke-width: 1;
       opacity: 0;
       transition: opacity 400ms ease 200ms;
@@ -528,8 +581,8 @@
       border-radius: 50%;
       width: calc(var(--r) * 2);
       height: calc(var(--r) * 2);
-      border: 1.5px solid rgba(143, 211, 255, 0.28);
-      background: rgba(143, 211, 255, 0.08);
+      border: 1.5px solid rgba(0, 255, 65, 0.28);
+      background: rgba(0, 255, 65, 0.08);
       top: 0;
       left: 0;
       transform: translate(-50%, -50%) scale(0);
@@ -538,7 +591,7 @@
       z-index: 2;
       text-decoration: none;
       cursor: pointer;
-      box-shadow: 0 0 18px rgba(143, 211, 255, 0.06);
+      box-shadow: 0 0 18px rgba(0, 255, 65, 0.06);
     }
 
     .fan-node::after {
@@ -548,17 +601,17 @@
       left: 50%;
       transform: translateX(-50%);
       white-space: nowrap;
-      font-family: "Space Grotesk", sans-serif;
+      font-family: "VT323", monospace;
       font-size: 0.70rem;
       font-weight: 600;
-      color: rgba(245, 247, 251, 0.62);
+      color: rgba(0, 255, 65, 0.62);
       pointer-events: none;
     }
 
     .fan-node:hover {
       border-color: var(--accent);
-      background: rgba(143, 211, 255, 0.16);
-      box-shadow: 0 0 28px rgba(143, 211, 255, 0.18);
+      background: rgba(0, 255, 65, 0.16);
+      box-shadow: 0 0 28px rgba(0, 255, 65, 0.18);
     }
 
     .fan-node:hover::after { color: var(--accent); }
@@ -593,8 +646,97 @@
     }
 
     .fan-close:hover {
-      border-color: rgba(143, 211, 255, 0.40);
+      border-color: rgba(0, 255, 65, 0.40);
       color: var(--text);
+    }
+
+    /* ── Book reader modal ── */
+    .book-reader {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(0, 0, 0, 0.88);
+      align-items: center;
+      justify-content: center;
+    }
+    .book-reader.open { display: flex; }
+
+    .book-reader-panel {
+      background: rgba(9, 13, 27, 0.98);
+      border: 1px solid rgba(0, 255, 65, 0.28);
+      border-radius: 14px;
+      width: min(680px, 90vw);
+      max-height: 82vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 50px rgba(0, 255, 65, 0.10), 0 20px 60px rgba(0, 0, 0, 0.60);
+      animation: reader-in 220ms ease;
+    }
+
+    @keyframes reader-in {
+      from { opacity: 0; transform: scale(0.96) translateY(8px); }
+      to   { opacity: 1; transform: scale(1)    translateY(0);   }
+    }
+
+    .book-reader-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px 14px;
+      border-bottom: 1px solid rgba(0, 255, 65, 0.14);
+      flex-shrink: 0;
+    }
+
+    .book-reader-title {
+      color: #ffffff;
+      font-family: "VT323", monospace;
+      font-size: 1.5rem;
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .book-reader-close {
+      background: none;
+      border: 1px solid rgba(0, 255, 65, 0.22);
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      color: rgba(0, 255, 65, 0.65);
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: border-color 140ms, color 140ms;
+    }
+    .book-reader-close:hover { border-color: rgba(0, 255, 65, 0.55); color: var(--text); }
+
+    .book-reader-body {
+      overflow-y: auto;
+      padding: 20px 24px 24px;
+      color: var(--text);
+      font-family: "VT323", monospace;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .book-reader-body::-webkit-scrollbar { width: 4px; }
+    .book-reader-body::-webkit-scrollbar-track { background: transparent; }
+    .book-reader-body::-webkit-scrollbar-thumb { background: rgba(0, 255, 65, 0.25); border-radius: 4px; }
+
+    .book-reader-pending {
+      color: rgba(0, 255, 65, 0.42);
+      font-style: italic;
+    }
+
+    .book-reader-section {
+      color: rgba(0, 255, 65, 0.55);
+      display: block;
+      margin: 0.6em 0;
     }
 
     /* ── Responsive ── */
@@ -613,54 +755,54 @@
   </style>
 </head>
 <body>
-  <header class="hud">
-    <div class="brand">
-      <div class="brand-mark">DE</div>
-      <div class="brand-copy">
-        <strong>Diego Espinoza</strong>
-        <span>Orbit interactivo</span>
-      </div>
-    </div>
-    <div class="hint">Arrastra con el mouse, usa la rueda o mueve con las flechas</div>
-  </header>
-
   
   <main class="stage" id="stage" tabindex="0" aria-label="Carrusel interactivo 3D">
     <div class="ring-wrap">
       <div class="orbit-rail"></div>
       
       <article class="card photo-card" data-id="profile" data-angle="0" data-z="1" aria-label="Perfil">
-        <div class="photo">
-          <img src="assets/profile-photo.jpeg" alt="Fotografía de Diego Espinoza" />
-        </div>
-        <span class="kicker">Perfil público</span>
-        <h2>Diego Espinoza</h2>
-        <p>Magíster en Ciencia de Datos y licenciado en Ciencias con mención en Astronomía. Trabajo entre análisis, automatización y visualización científica.</p>
-        <div class="socials" aria-label="Redes">
-          <a class="icon-pill" href="https://github.com/DiegoEspinozaoss" target="_blank" rel="noreferrer" aria-label="GitHub de Diego Espinoza">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.24c0 4.53 2.87 8.38 6.84 9.75.5.1.68-.22.68-.49 0-.24-.01-.86-.01-1.69-2.78.62-3.37-1.37-3.37-1.37-.46-1.2-1.13-1.52-1.13-1.52-.93-.65.07-.64.07-.64 1.03.07 1.57 1.08 1.57 1.08.91 1.59 2.39 1.13 2.97.86.09-.67.36-1.13.66-1.39-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05A9.28 9.28 0 0 1 12 6.84c.85 0 1.71.12 2.5.36 1.91-1.34 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.64 1.03 2.76 0 3.94-2.34 4.8-4.57 5.05.37.33.7.99.7 2 0 1.44-.01 2.61-.01 2.96 0 .27.18.59.69.49A10.26 10.26 0 0 0 22 12.24C22 6.58 17.52 2 12 2Z"/></svg>
-          </a>
-          <a class="icon-pill" href="https://www.linkedin.com/in/diego-ignacio-espinoza-n%C3%BA%C3%B1ez-29b872211/" target="_blank" rel="noreferrer" aria-label="LinkedIn de Diego Espinoza">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 4.97 8a2.5 2.5 0 0 1 .01-4.5ZM3 9h4v12H3V9Zm7 0h3.83v1.64h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.83 2.67 4.83 6.14V21h-4v-5.43c0-1.3-.02-2.96-1.8-2.96-1.8 0-2.08 1.41-2.08 2.86V21h-4V9Z"/></svg>
-          </a>
-          <a class="icon-pill" href="mailto:diegohaseox@gmail.com" aria-label="Correo de Diego Espinoza">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg>
-          </a>
-          <a class="icon-pill" href="https://www.youtube.com/@AstroNNomy" target="_blank" rel="noreferrer" aria-label="Canal de YouTube de Diego Espinoza">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.55 3.6 12 3.6 12 3.6s-7.55 0-9.38.46A3.02 3.02 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3.02 3.02 0 0 0 2.12 2.14C4.45 20.4 12 20.4 12 20.4s7.55 0 9.38-.46a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8ZM9.75 15.5v-7l6.25 3.5-6.25 3.5Z"/></svg>
-          </a>
-        </div>
-        <div class="meta" aria-label="Datos resumidos">
-          <span class="chip">Universidad de Chile</span>
+        
+    <button class="card-toggle" aria-expanded="false">
+      <span class="kicker">Perfil público</span>
+      <h2 class="card-title">Diego Espinoza</h2>
+      <span class="card-arrow">▶</span>
+    </button>
+        <div class="card-body">
+          <div class="photo">
+            <img src="assets/profile-photo.jpeg" alt="Fotografía de Diego Espinoza" />
+          </div>
+          <p>Magíster en Ciencia de Datos y licenciado en Ciencias con mención en Astronomía. Trabajo entre análisis, automatización y visualización científica.</p>
+          <div class="socials" aria-label="Redes">
+            <a class="icon-pill" href="https://github.com/DiegoEspinozaoss" target="_blank" rel="noreferrer" aria-label="GitHub">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.24c0 4.53 2.87 8.38 6.84 9.75.5.1.68-.22.68-.49 0-.24-.01-.86-.01-1.69-2.78.62-3.37-1.37-3.37-1.37-.46-1.2-1.13-1.52-1.13-1.52-.93-.65.07-.64.07-.64 1.03.07 1.57 1.08 1.57 1.08.91 1.59 2.39 1.13 2.97.86.09-.67.36-1.13.66-1.39-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05A9.28 9.28 0 0 1 12 6.84c.85 0 1.71.12 2.5.36 1.91-1.34 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.64 1.03 2.76 0 3.94-2.34 4.8-4.57 5.05.37.33.7.99.7 2 0 1.44-.01 2.61-.01 2.96 0 .27.18.59.69.49A10.26 10.26 0 0 0 22 12.24C22 6.58 17.52 2 12 2Z"/></svg>
+            </a>
+            <a class="icon-pill" href="https://www.linkedin.com/in/diego-ignacio-espinoza-n%C3%BA%C3%B1ez-29b872211/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 4.97 8a2.5 2.5 0 0 1 .01-4.5ZM3 9h4v12H3V9Zm7 0h3.83v1.64h.05c.53-1 1.84-2.05 3.79-2.05 4.05 0 4.83 2.67 4.83 6.14V21h-4v-5.43c0-1.3-.02-2.96-1.8-2.96-1.8 0-2.08 1.41-2.08 2.86V21h-4V9Z"/></svg>
+            </a>
+            <a class="icon-pill" href="mailto:diegohaseox@gmail.com" aria-label="Correo">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg>
+            </a>
+            <a class="icon-pill" href="https://www.youtube.com/@AstroNNomy" target="_blank" rel="noreferrer" aria-label="YouTube">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.55 3.6 12 3.6 12 3.6s-7.55 0-9.38.46A3.02 3.02 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3.02 3.02 0 0 0 2.12 2.14C4.45 20.4 12 20.4 12 20.4s7.55 0 9.38-.46a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8ZM9.75 15.5v-7l6.25 3.5-6.25 3.5Z"/></svg>
+            </a>
+          </div>
+          <div class="meta" aria-label="Datos resumidos">
+            <span class="chip">Universidad de Chile</span>
 <span class="chip">Santiago, Chile</span>
 <span class="chip">GitHub: DiegoEspinozaoss</span>
+          </div>
         </div>
       </article>
       
       <article class="card" data-id="education" data-angle="60" data-z="0" aria-label="Educación">
-        <span class="kicker">Educación</span>
-        <h3>Universidad de Chile · FCFM</h3>
-        <div class="edu-list">
+        
+    <button class="card-toggle" aria-expanded="false">
+      <span class="kicker">Educación</span>
+      <h3 class="card-title">Universidad de Chile · FCFM</h3>
+      <span class="card-arrow">▶</span>
+    </button>
+        <div class="card-body">
+          <div class="edu-list">
         <div class="edu-item">
           <span class="edu-degree">Magíster en Ciencia de Datos</span>
           <span class="edu-period">2022 – 2024</span>
@@ -669,9 +811,9 @@
           <span class="edu-degree">Lic. en Ciencias, mención Astronomía</span>
           <span class="edu-period">2018 – 2022</span>
         </div></div>
-        <div class="edu-divider"></div>
-        <p class="edu-secondary-label">Enseñanza media</p>
-        <div class="edu-list">
+          <div class="edu-divider"></div>
+          <p class="edu-secondary-label">Enseñanza media</p>
+          <div class="edu-list">
         <div class="edu-item">
           <span class="edu-degree">Liceo José Victorino Lastarria</span>
           <span class="edu-period">2014 – 2017</span>
@@ -680,34 +822,52 @@
           <span class="edu-degree">Colegio Hermanos Matte</span>
           <span class="edu-period">2006 – 2013</span>
         </div></div>
+        </div>
       </article>
       
       <article class="card" data-id="book" data-angle="120" data-z="0" aria-label="Libro">
-        <span class="kicker">Libro</span>
-        <h3>«La astronomía es una ciencia hecha del material con el que se forjan los sueños»</h3>
-        <p>— Anónimo · epígrafe del capítulo La ciencia de los cielos, en La astronomía es para todos (2025).</p>
-        <div class="cta-row">
-          <a class="cta secondary" href="overleaf_project/main.tex" target="_blank" rel="noreferrer">Abrir libro</a>
-        </div>
-        <div class="meta">
-          <span class="chip">Overleaf</span>
+        
+    <button class="card-toggle" aria-expanded="false">
+      <span class="kicker">Libro</span>
+      <h3 class="card-title">«La astronomía es una ciencia hecha del material con el que se forjan los sueños»</h3>
+      <span class="card-arrow">▶</span>
+    </button>
+        <div class="card-body">
+          <p>— Anónimo · epígrafe del capítulo La ciencia de los cielos, en La astronomía es para todos (2025).</p>
+          <div class="cta-row">
+            <a class="cta secondary" href="overleaf_project/main.tex" target="_blank" rel="noreferrer">Abrir libro</a>
+          </div>
+          <div class="meta">
+            <span class="chip">Overleaf</span>
 <span class="chip">Astronomía</span>
 <span class="chip">Ciencia de datos</span>
+          </div>
+          <button class="fan-trigger" id="fan-trigger-book">Capítulos</button>
         </div>
-        <button class="fan-trigger" id="fan-trigger-book">Capítulos</button>
       </article>
       
       <article class="card rear" data-id="work" data-angle="180" data-z="-1" aria-label="Trabajo actual">
-        <span class="kicker">Trabajo actual</span>
-        <h3>Paragon Private Advisors</h3>
-        <p>Analista de operaciones enfocado en automatización de envíos de correos, guardado de carpetas, regex y procesos internos. Estoy apoyándome en agentes de IA como Codex y Claude para acelerar tareas repetitivas, reducir fricción operativa y mantener consistencia en los flujos de trabajo.</p>
-        <div class="quote">Automatizar lo repetitivo para dedicar más tiempo a lo que realmente requiere criterio.</div>
+        
+    <button class="card-toggle" aria-expanded="false">
+      <span class="kicker">Trabajo actual</span>
+      <h3 class="card-title">Paragon Private Advisors</h3>
+      <span class="card-arrow">▶</span>
+    </button>
+        <div class="card-body">
+          <p>Analista de operaciones enfocado en automatización de envíos de correos, guardado de carpetas, regex y procesos internos. Estoy apoyándome en agentes de IA como Codex y Claude para acelerar tareas repetitivas, reducir fricción operativa y mantener consistencia en los flujos de trabajo.</p>
+          <div class="quote">Automatizar lo repetitivo para dedicar más tiempo a lo que realmente requiere criterio.</div>
+        </div>
       </article>
       
       <article class="card" data-id="skills" data-angle="240" data-z="0" aria-label="Habilidades técnicas">
-        <span class="kicker">Habilidades técnicas</span>
-        <h3>Stack &amp; herramientas</h3>
         
+    <button class="card-toggle" aria-expanded="false">
+      <span class="kicker">Habilidades técnicas</span>
+      <h3 class="card-title">Stack &amp; herramientas</h3>
+      <span class="card-arrow">▶</span>
+    </button>
+        <div class="card-body">
+          <div class="skills-groups-grid">
         <div class="skill-group">
           <span class="skill-group-label">Ciencia de datos</span>
           <div class="skill-icons-grid"><div class="skill-item">
@@ -774,19 +934,40 @@
     <span class="skill-icon" style="background:#4285f4"><img src="https://cdn.simpleicons.org/googlegemini/fff" alt="" width="28" height="28" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><span class="skill-icon-abbr" style="display:none">GE</span></span>
     <span class="skill-name">Gemini</span>
   </div></div>
+        </div></div>
         </div>
       </article>
       
       <article class="card" data-id="repos" data-angle="300" data-z="0" aria-label="Repositorios">
-        <span class="kicker">Repositorios</span>
-        <h3>GitHub público</h3>
-        <p>Proyectos, notebooks y material de trabajo que muestran parte de mi recorrido entre astronomía, programación y análisis de datos.</p>
-        <button class="fan-trigger" id="fan-trigger">Repositorios</button>
+        
+    <button class="card-toggle" aria-expanded="false">
+      <span class="kicker">Repositorios</span>
+      <h3 class="card-title">GitHub público</h3>
+      <span class="card-arrow">▶</span>
+    </button>
+        <div class="card-body">
+          <p>Proyectos, notebooks y material de trabajo que muestran parte de mi recorrido entre astronomía, programación y análisis de datos.</p>
+          <div class="gh-stats">
+            <div class="gh-stat"><span class="gh-stat-value" id="gh-repos">—</span><span class="gh-stat-label">repos</span></div>
+            <div class="gh-stat"><span class="gh-stat-value" id="gh-stars">—</span><span class="gh-stat-label">estrellas</span></div>
+            <div class="gh-stat"><span class="gh-stat-value" id="gh-lang">—</span><span class="gh-stat-label">lenguaje top</span></div>
+          </div>
+          <button class="fan-trigger" id="fan-trigger">Repositorios</button>
+        </div>
       </article>
     </div>
   </main>
 
   
+  <div id="book-reader" class="book-reader" aria-hidden="true">
+    <div class="book-reader-panel">
+      <div class="book-reader-header">
+        <span id="book-reader-title" class="book-reader-title"></span>
+        <button id="book-reader-close" class="book-reader-close" aria-label="Cerrar">✕</button>
+      </div>
+      <div id="book-reader-body" class="book-reader-body"></div>
+    </div>
+  </div>
   <div class="fan-overlay" id="fan-overlay" aria-hidden="true">
     <div class="fan-scene" id="fan-scene">
       <div class="fan-hub">GitHub</div>
@@ -799,21 +980,20 @@
     <div class="fan-scene" id="fan-scene-book">
       <div class="fan-hub">Libro</div>
       <svg class="fan-lines" id="fan-svg-book" viewBox="-400 -400 800 800" aria-hidden="true"></svg>
-      <a class="fan-node"  data-label="La observación en la ciencia" style="--r:62px"></a><a class="fan-node"  data-label="La ciencia y las mujeres" style="--r:48px"></a><a class="fan-node"  data-label="La ciencia y el lenguaje" style="--r:43px"></a><a class="fan-node"  data-label="Los límites de la ciencia" style="--r:42px"></a><a class="fan-node"  data-label="Las leyes y la ciencia" style="--r:37px"></a><a class="fan-node"  data-label="La ciencia y las matemáticas" style="--r:35px"></a><a class="fan-node"  data-label="La poesía y la astronomía" style="--r:34px"></a><a class="fan-node"  data-label="El legado científico" style="--r:34px"></a><a class="fan-node"  data-label="La ciencia y el ser humano" style="--r:34px"></a><a class="fan-node"  data-label="Existen muchas ciencias" style="--r:32px"></a><a class="fan-node"  data-label="La ciencia de los cielos" style="--r:32px"></a><a class="fan-node"  data-label="La ciencia y Dios" style="--r:29px"></a><a class="fan-node"  data-label="La ciencia y la libertad" style="--r:23px"></a><a class="fan-node"  data-label="La cercanía de la ciencia" style="--r:23px"></a><a class="fan-node"  data-label="La ciencia trabaja bajo paradigmas" style="--r:18px"></a>
+      <a class="fan-node"  data-label="La observación en la ciencia" style="--r:62px"></a><a class="fan-node"  data-label="La ciencia y las mujeres" style="--r:48px"></a><a class="fan-node"  data-label="La ciencia y el lenguaje" style="--r:43px"></a><a class="fan-node"  data-label="Los límites de la ciencia" style="--r:42px"></a><a class="fan-node"  data-label="Las leyes y la ciencia" style="--r:37px"></a><a class="fan-node"  data-label="La ciencia y las matemáticas" style="--r:35px"></a><a class="fan-node"  data-label="La poesía y la astronomía" style="--r:34px"></a><a class="fan-node"  data-label="El legado científico" style="--r:34px"></a><a class="fan-node"  data-label="La ciencia y el ser humano" style="--r:34px"></a><a class="fan-node"  data-label="Existen muchas ciencias" style="--r:32px"></a><a class="fan-node"  data-label="La ciencia de los cielos" style="--r:32px"></a><a class="fan-node"  data-label="La ciencia y Dios" style="--r:29px"></a><a class="fan-node"  data-label="La ciencia y la libertad de pensamiento" style="--r:23px"></a><a class="fan-node"  data-label="La cercanía de la ciencia" style="--r:23px"></a><a class="fan-node"  data-label="La ciencia trabaja bajo paradigmas" style="--r:18px"></a>
       <button class="fan-close" id="fan-close-book" aria-label="Cerrar">&#x2715;</button>
     </div>
   </div>
 
-  <div class="footer-hint">Flechas izquierda/derecha para rotar el anillo</div>
-
+  <script type="application/json" id="book-chapters">{"La ciencia y el ser humano":"El ser humano inventó las diferentes ciencias, no al revés. Ahora bien, si este orden es el correcto, entonces el ser humano está por encima de las ciencias. Por ende, las ciencias son un medio o instrumento que nos guía a servirnos mejor del mundo en el que nacimos. Sin embargo, como dijo el Sr Eintein, la supremacía de los tontos no puede ser superada por nadie. Porque en todos las épocas y en todas las naciones han habido hombres y mujeres dispuestas a utilizar todos los medios (incluida la ciencia) para destruir, extinguir, aniquilar y borrar de la faz de la tierra a sus pares. El hombre científico en este sentido debe ser un mártir, alguien que sin importar el régimen político que se imponga en la sociedad esté dispuesto a sostener la verdad o morir en su lugar. Porque para el científico la ciencia es el medio supremo que hemos recibido y creado para ayudarnos a nosotros mismos, y nunca aceptaría que se use como medio de opresión, humillación o degradación de nuestra propia dignidad con que hemos sido investidos por naturaleza. En este sentido decimos que el ser humano no fue creado para la ciencia, porque la ciencia no puede ser beneficiada por nosotros, como si necesitase algo de nuestra mano. En cambio nosotros sí necesitamos de ella, aprender de ella y mirar mediante ella el inmenso cosmos del cual somos una pequeña parte. \n\nEl ser humano no es para la ciencia, sino la ciencia para el ser humano se parece a las frases \"el hombre no fue hecho para el sàbado, sino el sàbado para el hombre\" o \"no fue el hombre hecho para la mujer, sino la mujer para el hombre\". Sin embargo, debemos decir de manera màs precisa: el hombre no es sin la ciencia, ni la ciencia sin el hombre. El hombre no es sin la religiòn ni la religiòn sin el hombre, asì como la mujer no es sin el hombre ni el hombre sin la mujer.","La cercanía de la ciencia":"Los científicos pueden parecer crudos (incluso fanáticos) cuando defienden lo que ellos consideran hechos científicos. Pero más que defender la verdad, deberían defender a las personas de la desinformación. Porque como dijo Nietzche la verdad no es tan débil que necesite de alguien que la defienda. Pero sin embargo, el conocimiento de las personas que ignoran estos hechos las hacen completamente indefensas y frágiles en un mundo que continuamente crece en tecnología, pero también en crueldad, robo y desenfreno por medio de ella. Como dije antes, existen y existirán hombres rapaces que están dispuestos a devorar a los inocentes e ingenuos, hombres que, resisten por lo general lo que se considera","La ciencia trabaja bajo paradigmas":"","Existen muchas ciencias":"He escuchado varias cosas en mi vida universitaria: \"yo querìa estudiar dicha carrera\", \"me cargan las personas que menosprecian a la ingenierìa elèctrica, como si fuera poca cosa, como si no tuviera valor\", \"en mi trabajo llego a irritarme cuando me preguntan en tono menospreciativo ¿no eres quìmico farmacèutico? cuando en realidad soy ingeniero quìmico\". Muchas de estas cuestiones y otras anàlogas me ha llevado a concluir que entre las personas que no estudian otra carrera diferente de la suya misma tienen prejuicios en contra de las mismas, y que, en general justifican a priori su decisiòn de haber estudiado la carrera que eligieron porque en el estado actual de su desarrollo, ya sea en el conocimiento que hallan o en el trabajo que obtienen de ella, hallan placer en sus frutos. Reflexionando con un amigo, notamos que en general las personas menosprecian cosas de las cuales carecen de conocimiento. Asì, por ejemplo, notamos que las personas que dicen \"¿no tienes novia a tu edad?\" o \"¿no has buscado trabajo?\" menosprecian muy a menudo a las personas que han terminado su carrera universitaria o bien han obtenido conocimiento de ella. Y es que en las conversaciones con dichas personas se refleja su pensamiento, el cual consiste en que si no puedo demostrar tener algo o como menos, tener algo con lo cual compararme con los demas, o tambièn mostrar alguna posesiòn (como novia, mi auto, mi trabajo o mi dinero o mi fama en redes sociales), carezco de valor como persona. Sin embargo, mi punto de vista es el siguiente: aprecio y le doy el valor que merece a cada persona, independiente de su carrera, trabajo, estado relacional, etc. Y No por eso dejo de valorar las carreras de dichas personas, trabajos o estados de relaciòn. Porque valoro sus carreras, por muy diferentes que parezcan en nivel de academicismo o de reconocimiento. \n\nEn general, asì como hay muchos trabajos, hay muchas ciencias dedicadas a muchos de ellos. Y asì como hay muchas ciencias hay muchos paradigmas que trabajan dentro de cada una de ellas. Como todas son esferas diferentes, todas son vàlidas y aplicables desde cierto punto de vista. Sin embargo, como se ha dicho muchas veces, el mundo cientìfico tiende o tenderà a una unificaciòn de conceptos o como menos, de paradigmas. Por lo tanto, podemos decir que las ciencias aùn se hallan en su estado embrionario. \n\nMe he percatado tambièn de que en la antiguedad las personas que se dedicaban a las ciencias o tenìan mucho apoyo econòmico, o escaso. En la actualidad sucede lo mismo, porque estudiar ingenierìa no es lo mismo que estudiar una carrera cientìfica, que en general requiere mayor cantidad de tiempo para obtener una posiciòn laboral estable. En la antiguedad los astrònomos por ejemplo, eran patrocinados en cuanto a sus trabajos por reyes o por personas muy ricas. Y no es muy diferente en la actualidad. Como se solìa perseguir en ocasiones a los que tenìan un nuevo descubrimiento en sus manos, a veces suele suceder en la actualidad, o bien es ignorado y dejado su mèrito en el olvido.","La ciencia de los cielos":"Mientras màs se ha desarrollado el mùsculo de las matemàticas en el curso de la historia, cuanto màs se ha acercado esta a las ciencias en general. Porque es evidente que a medida que las matemàticas se desarrollaron màs profundamente en demostraciones, teoremas, hipòtesis, etc. cuanto màs acercaron la posibilidad de describir cuantitativamente casi todas las cosas que suceden en nuestra modernidad. Y como todas las ciencias parecen describir casi todos los fenòmenos fìsicos, parece ser que las matemàticas vienen a ser particularmente de todas ellas su fundamento: geologìa, astronomìa, fìsica, biologìa, quìmica, etc. Tomemos el caso de astronomìa: sin las matemàticas es imposible la formulaciòn de leyes o patrones entre los cuales estàn: las propias fuerzas o las partìculas con sus fenòmenos respectivos. Entre las fuerzas contamos: la ley de gravitaciòn universal, la teorìa de la relatividad especial y general, etc.","Los límites de la ciencia":"El mundo tiene su fin, o al menos eso predican muchas teorías del fin del universo. Si es así, que el universo tiene un desenlace, entonces nosotros y por consiguiente nuestras ciencias tendrán inevitablemente un fin. Por otro lado, las ciencias no pueden demostrar ni comprender todos los fenómenos del universo, porque las matemáticas (la reina de las ciencias, Friedrich Gauss) que son más precisas que todas las demás no pueden hacerlo y por consiguiente mucho menos todas las demás. \n\nSin lugar a dudas, en el pasado se consideraban hazañas del presente como imposibles. En general, con el cambio de conceptos y con la incorporaciòn de nuevas tecnologìas siempre es posible considerar algo posible que anteriormente era imposible, que ni si quiera formaba parte de los sueños de las personas. Asì, por ejemplo, para Aristòteles hubiera sido absolutamente absurdo visitar una vez la luna, objeto celeste que èl consideraba perfecto e inmutable, como todos los demàs objetos celestes. Tambièn, para los primeros cientìficos quizà hubiera sido imposible creer o llegar a creer, que el ser humano lograrìa algùn dìa volar o sumergirse en las profunidades de los ocèanos. \n\nNo todo lo que es posible, es necesario, ni tan solo real. Porque lo que es real, no siempre es necesario, pero lo que es necesario siempre es real. Asì, metafìsica/ontològicamente hablando, es posible que una teorìa se adecùe a los datos que tenemos sobre un fenòmeno, pero sin embargo, no se sigue de ahì que dicha teorìa sea verdadera. Bien porque no tenemos todos los datos, o bien porque los datos estàn incorrectamente interpretados, o incorrectamente medidos. Por lo tanto, una teorìa puede ser calificada como objetiva, y sin embargo, ser incompleta, falsa o incluso ni tan solo una teorìa. \n\nEs interesante que existe entre algunos cientìficos el deseo de conocer una teorìa a partir de un conjunto pequeño de axiomas o principios que pueda explicar de una manera matemàticamente simple todos los fenòmenos del universo. Incluso dirìa que dichas personas querrìan que dicha teorìa fuese una necesidad ontològica de la naturaleza del universo, es decir, que sì o sì deba dicha teorìa decirnos porquè existen unas constantes fìsicas y no otras en cambio. Ademàs, es necesaria en el sentido de que el mismo universo en el que vivimos es un objeto necesario de la realidad, es imposible que sea de otra manera. Porque o bien el universo existe por azar, o bien por inteligencia, o bien por necesidad. Pero ellos rechazan el que exista por azar por la exacta determinaciòn de las constantes fìsicas, y tambièn la inteligencia porque creen que no puede existir un ser superior. Por lo que les queda solamente que exista el universo por necesidad. Pero hasta donde sabemos, no hay nada que necesite del universo en sì. Porque si el universo no existiera, nada cambiarìa. Porque si no hay universo, no hay nada que exija que el mismo venga a crearse o permanecer. Sin embargo, debemos tener en cuenta que el azar no es causa de nada, sino de manera accidental. Desde cierto punto de vista el azar es nuestra ignorancia de la causa de ciertos fenòmenos, cualitativa o cuantitativa. Pero asignar una causa a un objeto o sujeto desconocido no es otra cosa que tener fe. Asì, por ejemplo, decir que el resultado del lanzamiento de una moneda es por puro azar, cuando sabemos que existen dos resultados posibles, no es sino una demostraciòn de que no sabemos què es lo que causa que exista una dicotomìa en el espacio muestral. Por lo tanto, a priori asumimos que existe una causa que explica la cardinalidad del espacio muestral. Y asumir que existe dicha causa existe sin conocer todos los factores no es otra cosa que tener fe.","La poesía y la astronomía":"","El legado científico":"Algo que me llama la atenciòn del ser humano es que casi siempre busca dejar algùn legado, algùn objeto que le permita a sus conocidos recordarle o bien hacer algo que sea recordado por todos. Y es que en general el ser humano es un ser con memoria, y èl mismo siempre ha buscado ser recordado por otros. Màs aùn, le gustarìa recordar siempre que hay alguien que lo recuerda. Y es que todos desean de cierta forma la vida, pero no todas las cosas de la vida, sino solo las cosas necesarias de la misma. Y una de las cosas que ellos consideran necesarias es el recuerdo o la memoria del pasado. Porque podemos a lo màs recordar el pasado (el futuro no puede ser recordado, porque aùn no existe). Y dado que somos seres que viven en conjunto o en relaciòn con otros, buscamos tener algo en comùn con los otros. Y en general buscamos ser aceptados por alguien, aunque sea uno, pero tambièn dicha forma de ser aceptados es residir continuamente en el recuerdo de alguien, ya sea un amigo, familiar, conocido, etc. \n\nY tener algo en comùn con dichas personas es posible solo cuando tenemos recuerdos de nuestras vivencias en comùn. De todo lo anterior podemos concluir que queremos que alguien nos recuerde, porque queremos al menos a alguien: a nosotros mismos. Queremos recordarnos a nosotros mismos! pero tambièn en la mayorìa de los casos que nos recuerden. Y sin el recuerdo de nuestro pasado yo, no tiene sentido nada. Porque somos nosotros, y nosotros estamos hechos de nuestro pasado y presente. Pero dado que todos los demas nos pueden recordar solo por el pasado, se sigue que nos importa, y mucho, ser recordados. \n\nToda vez que hacemos algo esperamos que alguien haga algo por nosotros de vuelta, como menos, que nos recuerde. Ni si quiera que recuerde que hicimos algo bueno a sus propios ojos, sino que hicimos algo. Y porquè no queremos morir, sino es porque no queremos perder los recuerdos de lo que fue? no es acaso porque sabemos que ser olvidado es lo peor que le puede suceder a alguien? Pero no es peor no saber si me recuerdan? A su vez, toda decepciòn que nos llevamos de alguien en esta vida va acompañada de alguien que nos \"olvidò\". Asì, decimos que \"un amigo se olvidò de su promesa\", que el \"estado se olvidò de los pobres\", y en fin, \"que Dios se olvidò de su mundo\", cuando decimos que estamos triste. No existe nada màs aterrador que el olvido para la mente de alguien que ama pensar. Por eso, el que ya perdiò por otros motivos su propòsito en esta vida, puede decir: \"ya no quiero pensar, solo quiero olvidar\".\n\nY en general, el ser humano busca ser recordado, que alguien conozca una porciòn de sus propios pensamientos. Asì, escriben libros, edifican casas o edificios a sus nombres, crean fundaciones, y toda una serie de objetos por medio de los cuales pretenden inmortalizar su propia actividad. Y todas las comunidades cientìficas no son una excepciòn. Porque los cientìficos buscan varias cosas, entre ellas escribir artìculos con sus descubrimientos, crear instituciones de investigaciòn con el nombre de cientìficos reconocidos, darle homenaje a ciertos descubridores por medio de nombres de fenòmenos, etc.\n\n── El legado robado: profesores que se apropian del trabajo de sus estudiantes ──\n\n[Aquí va tu opinión personal sobre este tema.]","Las leyes y la ciencia":"Seguramente, es de saber que en nuestro mundo existe para cada sociedad un conjunto de leyes que rigen y regulan las relaciones entre los miembros de las mismas. Pero dado que no es posible definir todos los detalles mìnimos por medio de reglas generales, es preciso que, si la ley ha de regular todos los casos, que la misma sea modificada. Asì, casos como \"hombre mata a niño\", \"hombre quema una casa\", etc. no son claramente categorizables como aquellos casos en los que el delincuente debe pagar o quedar preso por la ley que dice \"todo ser humano nace libre, etc.\". Es decir, una ley o proposiciòn como esa, que tiene la intenciòn de ser muy general y en ocasiones ambigua en cuanto a su aplicaciòn, debe ser modificada agregando o quitando porciones de la misma. \n\nY mucho màs, sabiendo que el edificio de las ciencias naturales crece dìa a dìa, cuyo conocimiento aumenta y sobreabunda, es necesario que en pro de dicho nuevo conocimiento y nuevas tècnicas o tecnologìas se modifiquen las leyes para el propio beneficio del ser humano. Darè algunos ejemplos: si crea una tecnologìa que permite conocer antes de que suceda un delito, entonces deberìa modificarse ese corpus de leyes o normas que indican que existe plena libertad para que una persona circule libremente por las calles de un paìs. O si se crea un dispositivo que mejora o supera en tiempo de traslado a los del tiempo actual, entonces las leyes que deberìan ser modificadas son las de trànsito. O si se crea un alimento que le permite al ser humano comer una sola vez al dìa, deberìan crearse o abolirse leyes sobre su comercializaciòn, crearse o destruirse ministerios, etc. \n\nEs decir, en general, deberìan modificarse no solamente por ejemplo en nuestro paìs la constituciòn, sino tambièn toda la estructura de leyes, normas, estatutos o decretos que existen a diferentes niveles.","La ciencia y Dios":"Parece que el universo por definición es aquello en lo que podemos percibir o medir algun efecto. Por eso, se dice que el universo observable es todo lo que podemos ver, porque lo que está más allá nunca nos podrá comunicar algún efecto como causal.\n\nDios esta por fuera de la ciencia, o en contra, o bien no està en contra. En todo caso, parece que Dios tiene preferencia por mostrarse en todos los fenomenos.","La ciencia y las matemáticas":"Si los numeros son parte de la realidad o no lo son, es algo que ha sido parte del debate filosofico de muchos autores.\n\nLos numeros, si bien no son objetos o sujetos que pueden causar o ser causados, sin embargo, son conceptos que describen absolutamente con mucha precisiòn ciertas relaciones de objetos que en efecto existen.\n\nEn las ciencias modernas, existe la suposicion de que todos los fenomenos son susceptibles de ser analizados madiante metodos matematicos o funciones. Asi, la inteligencia aritifical, los fenomenos fisicos, quimicos, biologicos, etc.","La ciencia y las mujeres":"En el mundo en el que vivimos, no siempre el que tiene más mérito, talento o habilidad es el que más reconocimiento recibe, ni tan si quiera a veces reconocimiento alguno por sus contemporáneos. Como tampoco en muchos trabajos actualmente hombres o mujeres reciben el puesto que merecen, y otros hombres y mujeres reciben el puesto que no merecen. Así también, tenemos casos de científicos que no fueron premiados o reconocidos por sus descubrimientos o teorías. Esto nos da a entender que en la vida tener reconocimiento no debe definir nuestra identidad. El caso más célebre en mi opinión es el de Jocelyn Bell Burnell, astrónoma que en el año 1967 descubrió un nuevo objeto celeste: los Púlsares. Y aunque fue así, los que recibieron el premio nobel en 1974 por dicho descubrimiento fueron sus dos profesores guías (dos hombres por lo demás): Antony Hewish y Martin Ryle. Por eso incluso algunos de sus pares le llamaban el premio No-Bell (en alusión a su apellido). Antes las mujeres pensaban que no podrían lograr algún éxito en las ciencias, quizás por el mismo hecho del reconocimiento, porque el reconocimiento se considera como una especie de éxito en dichas áreas. \n\nAquello que es lo primero en suceder, siempre se considera de mayor importancia, porque es lo que causa una ruptura en alguna serie de eventos. Así, para nosotros es importante la primera vez que alguien observaba un objeto celeste (una estrella, cometa, planeta, etc.), la primera vez que alguien descubría un nuevo continente (como en el caso de América), la primera vez que alguien pisaba la luna, etc. Y en el caso de las mujeres, al ser el género que siempre ha sido menospreciado, el género que ha vivido a la sombra de los logros del hombre, toda vez que se halla una primera vez, se dice que es un logro. Como toda vez que se dice que es la primera mujer en \"ir a la luna\", \"sufragar\", \"ser presidenta\", \"obtener un título universitario\". Por lo que la irrupción de la mujer en cualquier trabajo en general fue, es y será algo que marca el nivel de igualdad entre mujeres. \n\nEl que antes la mujer no pudiera sufragar indica que no se consideraba como un ser político, el que antes ellas no pudieran realizar algún trabajo de investigación indica que no eran consideradas seres pensantes, el que no recibieran reconocimiento alguno por parte de las sociedades implica que no eran consideradas como seres con habilidad alguna (exceptuando quizás habilidad para el mal). Pero como dijo John Stuart Mill, para que la mujer pueda ser feliz, debe lograr ser independiente del hombre en todo sentido, o como menos, tener dicha oportunidad. Y ser independiente del hombre implica que su voto es solo suyo, que su investigación es dirigida solo por ella o que no necesita a un hombre para recibir reconocimiento público. Dicho de otra manera, con el avance del tiempo se puede decir que la mujer ha logrado depender y necesitar cada vez menos del hombre para subsistir. \n\nActualmente me llama la atencion el hecho de que todos hablan del sesgo de gènero, como si fuera el ùnico que existe. Aquì se muestra un estracto de una periodista que me llamó mucho la atención. \n\nBenjamín Rivas Beltrán, grábense ese nombre. Tiene 18 años, estudió en un liceo de Curanilahue y es puntaje nacional en matemáticas.\n\nYa es un mérito no viniendo de los típicos colegios. Pero además, Benjamín vive con parálisis cerebral.\nLa parte medio llena del vaso: en Chile ha aumentado la cantidad de personas con discapacidad que ingresan a la educación superior y también las que la terminan. La parte vacía del vaso es que no llegan al 10% entre quienes están en situación de discapacidad.\nLas ponemos en esa situación porque no hacemos las adecuaciones básicas. Si hay dos libros, uno en braille y otro tradicional, la persona ciega y usted pueden leer. Pero pongo en una situación de discapacidad a quien no ve con los ojos si no le entrego ese libro en relieve. Es cuestión de perspectiva, porque si se apaga la luz… y están los dos libros, ¿quién es ciego ahí? Usted.\nBenjamín ha tenido que luchar en un país que jamás pensaría en dejar de usar el cobre, pero que se da el lujo de perderse talentos como él, que quedan en el camino por falta de recursos o apoyo.\nEsto no es buenismo, es un tema de DD. HH. Nos parecería escandaloso hacer colegios o universidades sin baños, pero aceptamos que abran sin equipos profesionales de inclusión.\nEn Chile no sobran los Benjamines. Nadie sobra, pero intuyo que, como marchan poco las personas con discapacidad, rara vez son prioridad. Este será un mejor país el día en que una discapacidad sea un diagnóstico y no un pronóstico de lo que lograrás.\" Mónica Rincòn \n\nAlgo que me llama la atencion es que antiguamente se solia creer que porque alguien pueda tener sexo, es lìcito que lo tenga (por ejemplo, que las mujeres tengan sexo cuando cumplen 12 a 13 años). Pero analizandolo bien, si alguien tiene las capacidades fìsicas para robar, no se deduce de ello que sea lìcito hacerlo. Ni tampoco que porque pueda trabajar, deba hacerlo. O porque pueda prostituirse sea bueno, benèfico o lìcito. Un niño, y en particular una niña, no debe ni deberìa ser puesto por la sociedad en una situaciòn en la cual necesite tener sexo, trabajar o prostituirse o robar siendo una niña. Porque el niño y la niña son el principio de la vida propia suya, asì como de la vida en comunidad. Por lo que ponerla en una situaciòn asì a temprana edad implica cohartar sus habilidades cuyo tiempo tendrìa que invertir en actividades ilìcitas y perversas.","La observación en la ciencia":"Según lo que he podido apreciar del mundo de las ciencias, hay una enormidad de cosas que no podemos ver pero de las cuales tenemos certeza de su existencia: el tiempo, el espacio, la función de onda de la mecánica cuántica (y todos los \"observables\" de la misma teoría), los agujeros negros, el Big Bang, el centro de planetas/estrellas/etc. Analizaré a continuación cada uno de los objetos mencionados (si es que son objetos propiamente hablando). \n\nTiempo y Espacio\n\nEl tiempo, como se ha dicho a veces, forma parte del continuo espacio-tiempo descrito por la teoría de la gravedad de Einstein, por lo que con su par el espacio son considerados como entes reales. Además, es claro que no podemos ver el tiempo, porque a lo más podemos observar las cosas que suceden en el espacio. Y aún así no podemos observar el espacio, porque el tejido espacial no es visible por sí mismo, sino su contenido. Así podemos decir que en general ni el tiempo ni el espacio son visibles, sino solo lo que aquéllos contienen: sucesos y objetos (porque en el tiempo hay sucesos y en el espacio hay objetos).\n\nLa función de onda\n\nLa función de onda y, en general, todos los objetos matemáticos que se usan en la teoría de la mecánica cuántica son objetos que se consideran algo real, porque si no fuera real, no tendrían efecto en el mundo. Pero además se considera evidentemente que ninguna función matemática es visible, porque son objetos abstractos o ideas, que a pesar de ser tales, son reales y tienen efectos empíricos. Por lo tanto, podemos concluir que la función de onda no es visible (porque es una función). \n\nLos agujeros negros\n\nComo se ha repetido muchas veces, lo que nosotros vemos no es el agujero negro como tal (como en las imágenes de los años 2019 y 2021) sino su sombra (o para ser más rigurosos, la sombra de su alrededor). Y para entender esto es necesario definir el agujero negro como aquella región del espacio y del tiempo en el cual la curvatura del espacio es tal que la luz no es suficiente para escapar más allá de su horizonte de eventos (algo así como el límite que marca su volumen). Pero dado que la sombra por definición es la ausencia de luz, al haber ausencia de luz en la región donde deberíamos ver al agujero negro, concluimos que su imagen es una sombra (así como no hay problema en decir que la sombra de una persona es en realidad una imagen).\n\n El Big-Bang\n\nLo que de antaño se utilizaba para denostar una teoría sobre el origen del cosmos, hoy en día es generalmente aceptado entre muchas comunidades científicas. Un hito clave para entender porqué no es visible es el de que en la medida en que miramos objetos (como galaxias, estrellas, polvo interestelar, etc.) más lejanos (alejados a millones de kilómetros, unidades astronómicas, pársecs, etc.), en realidad estamos viendo cómo eran dichos objetos en el pasado. Por lo que, si vemos objetos muy lejanos en realidad estamos viendo objetos muy antiguos. Pero el universo no quiere que miremos más allá del límite en el cual pasaron 380.000 años después del Big Bang, porque antes de eso los fotones que formaban la luz del universo no podían \"volar\" mucho espacio sin chocar o ser absorbidos. Y antes de eso nada podemos ni podremos ver nunca, porque lo que pasó en el pasado no puede ser modificado. En pocas palabras, el Big Bang es el primer instante del universo, y está en el pasado. Aquí tenemos otro momento del mundo que jamás veremos, no importa cuán profundo sea nuestro conocimiento, ni cuán avanzados estemos como civilización. \n\nCentro de planetas o estrellas:\n\nEl centro de estrellas y planetas (algunos de los cuales se consideran estrellas fallidas, como aquellos que están compuestos casi enteramente de gas y/o polvo) no son posibles de ver. Lo único que disponemos actualmente es de uno o más marcos teóricos que nos dicen bajo cierta cantidad de suposiciones y evidencias que todos los planetas que son esféricos, tienen un centro caliente (por lo general, el de las estrellas de millones de grados celsius y el de los planetas como la tierra de miles de grados). Pero debido a dichas elevadas temperaturas y a la profundidad inmensa (en la tierra seis mil kilómetros de radio o una vez y media el largo de Chile) no es posible acercarnos con la tecnología actual a ver cómo es su interior.\n\nNube de Oort, enanas rojas, estrellas de poblacion tipo III, energia oscura, materia oscura.\n\nEn general, en la vida cotidiana hay miles (una infinidad) de cosas que no hemos visto personalmente pero que creemos que existen o existieron: nuestro tatara-abuelo (y toda nuestro árbol genealógico), casi ocho mil millones de seres humanos (que nunca hemos personalmente visto), y voy más allá: nuestro propio cerebro (incluidos la mayoria de nuestros órganos internos, y que sin embargo, tenemos ciencia cierta de que existen por sus efectos, e incluidos también todos sus elementos componentes, millones de células, microbiota, organelos, átomos, etc.).\n\nEn definitiva, si no podemos ver todas las cosas del presente, mucho menos podemos ver las todas las cosas del pasado, y mucho menos en consecuencia, las cosas o eventos del futuro. Podemos decir que el intento constante de ciertos grupos de personas por negar ciertos hechos históricos porque simplemente no los vieron o porque no los pueden repetir, es negar no solo la historia, sino el mismo fundamento de muchas ciencias, entre ellas la astronomía y la arqueología. Porque dichas dos ciencias están hechas de tal manera que no necesitan experimentos repetibles, debido a que por un lado no podemos repetir el universo en sí (en el caso de la astronomía) ni pedirle a un ser vivo que viva y vuelva a morir para ver cómo eran las condiciones en las que murió. Podemos calificar dicho espíritu de anticientífico. \n\nDicho espíritu es el mismo que tiende a relativizar el cambio climático, las crisis sanitarias (el covid 19 por ejemplo), los aportes de las matemáticas (sobre todo en la juventud) y más bien tiende a creer en fábulas como el terraplanismo, el creacionismo literal, los iluminatis, fenómenos ovni (y todo lo relacionado a criaturas fantásticas de ese género, como el hombre de las nieves, etc.), etc. La negación no es solo de lo que no se ve, sino de lo que no se siente, huele, oye, piensa, escucha o experimenta. Pero incluso esto, como dijimos más arriba, va más allá de lo que nos permite la o las ciencias. \n\nUna paradoja es un evento que reviste algo de contradictorio en apariencia, un misterio es un evento cuya veracidad queda velada, pero no su verdad o su existencia. Asì, es una paradoja la del gato de Schrodinger o la del abuelo, pero un misterio còmo se crea una partìcula o destruye la misma, cuàl es el valor de verdad de una proposiciòn indemostrable. La paradoja y el misterio ambos son de naturaleza subjetiva, porque desde cierto punto de vista la paradoja es algo que a una persona le parece contradictorio, es decir, que es falso y verdadero, y en el caso del misterio es un caso que a una persona le parece imposible de conocer algùn mecanismo o su propia veracidad. La paradoja parece falso (y por ende contradictorio) pero cuya demostraciòn se mantiene oculta (en este caso, se exhibe cierta ignorancia de que un argumento puede no ser necesariamente vàlido), el misterio es algo que nos parece verdadero pero cuya demostraciòn es oculta (en este caso, se exhibe cierta ignorancia de que una proposiciòn puede ser verdadera aùn si no sabemos còmo demostrarla). La paradoja tiene que ver con la ignorancia de la necesidad lògica de un argumento, mientras que el misterio tiene que ver con la ignorancia de la existencia de dicho argumento. Por ejemplo, la paradoja del abuelo es paradoja porque se ignora que no necesariamente por viajar al pasado y matar a mi abuelo me muero, y un misterio como el de la muerte de una persona existe por la ignorancia de la existencia del asesino de dicha persona. Una paradoja se dice de algo que tiene que ver con la contradiccion de algo, un misterio con una caja negra cuyo contenido es desconocido.","La ciencia y la libertad de pensamiento":"En general, el ser humano se dice un ser libre. Esto sin embargo se puede analizar desde varios puntos de vista. Existe en fìsica la posibilidad de algo que se llaman los bucles temporales cerrados, en los cuales todas las acciones dentro del bucle se hallan inexorable y necesariamente determinadas para que todas sus relaciones causa-efecto permitan su subsistencia. Si entro por casualidad en un bucle sin saberlo, realizarè una serie finita de movimientos durante mi estancia en el mismo, y cuando salga solamente habrè permitido que mi yo del pasado entre en el mismo bucle, siendo asì de cierta manera causa de mis propias causas. Por otro lado, parece que existe una relaciòn entre la relaciòn causa-efecto, el libre albedrìa, la direccion del tiempo y la entropia. Quizàs no es tan absurda dicha relacion, teniendo en cuenta que somos libres precisamente porque creemos que no existe nada que sea causa de nuestras decisiones, ni que sea determinante de nuestro futuro, por ende de nuestros efectos. Pero a la vez la causa y el efecto tienen una especial relacion con el tiempo, porque en dicha relaciòn la causa va primero y el efecto despuès.","La ciencia y el lenguaje":""}</script>
   <script>
     const stage = document.getElementById('stage');
     const cards = Array.from(document.querySelectorAll('.card'));
     const cardById = new Map(cards.map((card) => [card.dataset.id, card]));
 
-    const orbitRadiusX = 560;
-    const orbitRadiusY = 230;
-    const orbitDepth   = 300;
+    const orbitRadiusX = 410;
+    const orbitRadiusY = 165;
+    const orbitDepth   = 220;
     const stepRotation = 60;
     const directionMap = {"profile":{"left":"repos","right":"education"},"education":{"left":"profile","right":"book"},"book":{"left":"education","right":"work"},"work":{"left":"book","right":"skills"},"skills":{"left":"work","right":"repos"},"repos":{"left":"skills","right":"profile"}};
     const DRAG_SENSITIVITY  = 0.08;
@@ -937,9 +1117,346 @@
 
     centerCard('profile');
 
+    /* ── Collapsible cards ── */
+    document.querySelectorAll('.card-toggle').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var card = btn.closest('.card');
+        var isExpanded = card.classList.toggle('expanded');
+        btn.setAttribute('aria-expanded', String(isExpanded));
+      });
+    });
+
+    /* ── Matrix rain (multi-layer depth) ── */
+    (function initMatrix() {
+      var canvas = document.createElement('canvas');
+      canvas.id = 'matrix-canvas';
+      canvas.style.cssText = 'position:fixed;inset:0;z-index:-1;pointer-events:none;transition:transform 0.9s cubic-bezier(0.4,0,1,1),opacity 0.9s ease;transform-origin:center center;';
+      document.body.appendChild(canvas);
+      var ctx = canvas.getContext('2d');
+
+      var chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンｦｧｨｩｪｫｬｭｮｯ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ@#$%&*ΩΣΔΦΨΛΘΞΠϟ∑∆∇∞≠≈⌬⌭⌮ᴚᴙɐɔɹʇʌʍáéíóúüñÁÉÍÓÚÜÑ¿¡';
+      var mirrorSet = new Set('áéíóúüñÁÉÍÓÚÜÑ¿¡');
+
+      var LAYERS = [
+        { fontSize: 7,  speed: 0.25, maxAlpha: 0.35, trailMin: 18, trailMax: 30 },
+        { fontSize: 11, speed: 0.40, maxAlpha: 0.55, trailMin: 22, trailMax: 38 },
+        { fontSize: 16, speed: 0.60, maxAlpha: 0.80, trailMin: 26, trailMax: 44 },
+        { fontSize: 24, speed: 0.90, maxAlpha: 1.00, trailMin: 20, trailMax: 34 },
+      ];
+
+      var layers = [];
+
+      function randChar() { return chars[Math.floor(Math.random() * chars.length)]; }
+
+      function makeColumn(h, fs, speed, trailMin, trailMax) {
+        var len = Math.floor(Math.random() * (trailMax - trailMin)) + trailMin;
+        return {
+          y:       Math.random() * -(h / fs),
+          prevRow: null,
+          speed:   speed,
+          trail:   Array.from({ length: len }, randChar),
+        };
+      }
+
+      function buildLayers() {
+        canvas.width  = window.innerWidth;
+        canvas.height = window.innerHeight;
+        layers = LAYERS.map(function(l) {
+          var cols = Math.floor(canvas.width / l.fontSize);
+          return {
+            cfg:     l,
+            columns: Array.from({ length: cols }, function() {
+              return makeColumn(canvas.height, l.fontSize, l.speed, l.trailMin, l.trailMax);
+            }),
+          };
+        });
+      }
+      buildLayers();
+      window.addEventListener('resize', buildLayers);
+
+      function drawLayer(layer) {
+        var l   = layer.cfg;
+        var fs  = l.fontSize;
+        var h   = canvas.height;
+        ctx.font = fs + 'px monospace';
+
+        layer.columns.forEach(function(col, i) {
+          var x   = i * fs;
+          var len = col.trail.length;
+
+          var curRow = Math.floor(col.y);
+          if (col.prevRow === null) col.prevRow = curRow;
+          if (curRow > col.prevRow) {
+            col.trail.pop();
+            col.trail.unshift(randChar());
+            col.prevRow = curRow;
+          }
+          for (var j = 1; j < len; j++) { if (Math.random() < 0.06) col.trail[j] = randChar(); }
+
+          for (var j = 0; j < len; j++) {
+            var row = Math.floor(col.y) - j;
+            var y   = row * fs;
+            if (y < 0 || y > h) continue;
+
+            if (j === 0) {
+              ctx.shadowColor = 'rgba(255,255,255,0.6)';
+              ctx.shadowBlur  = fs * 0.4;
+              ctx.fillStyle   = 'rgba(255,255,255,' + l.maxAlpha.toFixed(2) + ')';
+            } else {
+              ctx.shadowBlur  = 0;
+              ctx.shadowColor = 'transparent';
+              var fade = Math.pow(1 - j / len, 1.4) * l.maxAlpha;
+              ctx.fillStyle   = 'rgba(0,255,65,' + fade.toFixed(3) + ')';
+            }
+
+            if (mirrorSet.has(col.trail[j])) {
+              ctx.save();
+              ctx.translate(x + fs * 0.5, y);
+              ctx.scale(-1, 1);
+              ctx.fillText(col.trail[j], -fs * 0.5, 0);
+              ctx.restore();
+            } else {
+              ctx.fillText(col.trail[j], x, y);
+            }
+          }
+          ctx.shadowBlur  = 0;
+          ctx.shadowColor = 'transparent';
+
+          col.y += col.speed;
+          if ((col.y - len) * fs > h) {
+            col.y       = Math.random() * -(h / fs * 0.5);
+            col.prevRow = null;
+            col.trail   = Array.from({ length: Math.floor(Math.random() * (l.trailMax - l.trailMin)) + l.trailMin }, randChar);
+          }
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        layers.forEach(drawLayer);
+      }
+      setInterval(draw, 50);
+    })();
+
+    /* ── Glitch cursor ── */
+    (function initGlitchCursor() {
+      document.body.style.cursor = 'none';
+      var cc = document.createElement('canvas');
+      cc.style.cssText = 'position:fixed;inset:0;z-index:9999;pointer-events:none;';
+      document.body.appendChild(cc);
+      var cx = cc.getContext('2d');
+      var mx = -200, my = -200, lx = -200, ly = -200;
+      var vx = 0, vy = 0;
+      var shapeIdx = 0;
+      var shapes = ['square','triangle','diamond','circle','cross'];
+      var size = 18;
+
+      function resize() { cc.width = window.innerWidth; cc.height = window.innerHeight; }
+      resize();
+      window.addEventListener('resize', resize);
+
+      document.addEventListener('mousemove', function(e) {
+        var dx = e.clientX - lx, dy = e.clientY - ly;
+        vx = dx; vy = dy;
+        mx = e.clientX; my = e.clientY; lx = mx; ly = my;
+        if (Math.sqrt(dx*dx + dy*dy) > 8) shapeIdx = Math.floor(Math.random() * shapes.length);
+      });
+
+      function drawShape(ctx, shape, x, y, s) {
+        ctx.beginPath();
+        if (shape === 'square')    { ctx.rect(x - s/2, y - s/2, s, s); }
+        else if (shape === 'triangle') { ctx.moveTo(x, y + s/2); ctx.lineTo(x - s/2, y - s/2); ctx.lineTo(x + s/2, y - s/2); ctx.closePath(); }
+        else if (shape === 'diamond')  { ctx.moveTo(x, y - s/2); ctx.lineTo(x + s/2, y); ctx.lineTo(x, y + s/2); ctx.lineTo(x - s/2, y); ctx.closePath(); }
+        else if (shape === 'circle')   { ctx.arc(x, y, s/2, 0, Math.PI*2); }
+        else if (shape === 'cross')    {
+          var t = s * 0.18, h = s / 2;
+          ctx.moveTo(x-h,y-t); ctx.lineTo(x-t,y-t); ctx.lineTo(x-t,y-h); ctx.lineTo(x+t,y-h);
+          ctx.lineTo(x+t,y-t); ctx.lineTo(x+h,y-t); ctx.lineTo(x+h,y+t); ctx.lineTo(x+t,y+t);
+          ctx.lineTo(x+t,y+h); ctx.lineTo(x-t,y+h); ctx.lineTo(x-t,y+t); ctx.lineTo(x-h,y+t);
+          ctx.closePath();
+        }
+      }
+
+      function drawCursor() {
+        cx.clearRect(0, 0, cc.width, cc.height);
+        var speed = Math.sqrt(vx*vx + vy*vy);
+        var glitch = Math.min(speed * 0.5, 14);
+        var shape = shapes[shapeIdx];
+
+        if (glitch > 3) {
+          var ox = vx * 0.28, oy = vy * 0.28;
+          cx.save(); cx.globalCompositeOperation = 'screen';
+          cx.strokeStyle = 'rgba(255,0,80,0.85)'; cx.lineWidth = 1.5;
+          drawShape(cx, shape, mx - ox, my - oy, size); cx.stroke(); cx.restore();
+          cx.save(); cx.globalCompositeOperation = 'screen';
+          cx.strokeStyle = 'rgba(0,255,220,0.85)'; cx.lineWidth = 1.5;
+          drawShape(cx, shape, mx + ox, my + oy, size); cx.stroke(); cx.restore();
+        }
+
+        cx.save();
+        cx.strokeStyle = glitch > 3 ? '#ffffff' : '#00ff41';
+        cx.lineWidth = 1.5;
+        cx.shadowColor = '#00ff41'; cx.shadowBlur = 8;
+        drawShape(cx, shape, mx, my, size); cx.stroke();
+        cx.restore();
+
+        vx *= 0.82; vy *= 0.82;
+        requestAnimationFrame(drawCursor);
+      }
+      requestAnimationFrame(drawCursor);
+    })();
+
+    /* ── Electronic beep on click ── */
+    (function initBeep() {
+      var AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      var actx = null;
+      function beep() {
+        if (!actx) actx = new AudioCtx();
+        var osc = actx.createOscillator();
+        var gain = actx.createGain();
+        osc.connect(gain); gain.connect(actx.destination);
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(900, actx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(420, actx.currentTime + 0.09);
+        gain.gain.setValueAtTime(0.12, actx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, actx.currentTime + 0.13);
+        osc.start(actx.currentTime); osc.stop(actx.currentTime + 0.13);
+      }
+      document.addEventListener('click', function(e) {
+        if (e.target.closest('button, a, .card-toggle')) beep();
+      });
+    })();
+
+    /* ── GitHub live stats ── */
+    (function loadGhStats() {
+      var username = 'DiegoEspinozaoss';
+      fetch('https://api.github.com/users/' + username + '/repos?per_page=100')
+        .then(function(r) { return r.json(); })
+        .then(function(repos) {
+          if (!Array.isArray(repos)) return;
+          var stars = repos.reduce(function(s, r) { return s + (r.stargazers_count || 0); }, 0);
+          var langs = {};
+          repos.forEach(function(r) { if (r.language) langs[r.language] = (langs[r.language] || 0) + 1; });
+          var topLang = Object.keys(langs).sort(function(a, b) { return langs[b] - langs[a]; })[0] || '—';
+          var elRepos = document.getElementById('gh-repos');
+          var elStars = document.getElementById('gh-stars');
+          var elLang  = document.getElementById('gh-lang');
+          if (elRepos) elRepos.textContent = repos.length;
+          if (elStars) elStars.textContent = stars;
+          if (elLang)  elLang.textContent  = topLang;
+        })
+        .catch(function() {});
+    })();
+
     /* ── Fan views ── */
     (function initFans() {
-      function setupFan(overlayId, triggerId, closeId, svgId, orbitR) {
+      var matrixCanvas = document.getElementById('matrix-canvas');
+
+      /* binary plane canvas */
+      var bc = document.createElement('canvas');
+      bc.style.cssText = 'position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0;transition:transform 1s cubic-bezier(0.4,0,1,1),opacity 0.4s ease;transform-origin:center center;transform:scale(1);';
+      document.body.appendChild(bc);
+      var bx = bc.getContext('2d');
+
+      var BIN_LAYERS = [
+        { fs:  3, alpha: 0.12, glow: false },
+        { fs:  6, alpha: 0.28, glow: false },
+        { fs: 11, alpha: 0.50, glow: false },
+        { fs: 20, alpha: 0.78, glow: true  },
+        { fs: 38, alpha: 1.00, glow: true  },
+      ];
+
+      function drawBinary() {
+        bc.width = window.innerWidth; bc.height = window.innerHeight;
+        bx.fillStyle = '#000'; bx.fillRect(0, 0, bc.width, bc.height);
+        BIN_LAYERS.forEach(function(l) {
+          var fs   = l.fs;
+          var cols = Math.ceil(bc.width  / fs) + 2;
+          var rows = Math.ceil(bc.height / fs) + 2;
+          bx.font = 'bold ' + fs + 'px monospace';
+          if (l.glow) { bx.shadowColor = 'rgba(0,255,100,0.5)'; bx.shadowBlur = fs * 0.6; }
+          else        { bx.shadowBlur  = 0; bx.shadowColor = 'transparent'; }
+          for (var r = 0; r < rows; r++) {
+            for (var c = 0; c < cols; c++) {
+              var bit    = Math.random() > 0.5 ? '1' : '0';
+              var bright = Math.random();
+              var a      = l.alpha * (0.5 + bright * 0.5);
+              if (bright > 0.93) {
+                bx.fillStyle = 'rgba(255,255,255,' + l.alpha.toFixed(2) + ')';
+              } else if (bright > 0.72) {
+                bx.fillStyle = 'rgba(160,255,200,' + a.toFixed(2) + ')';
+              } else {
+                bx.fillStyle = 'rgba(0,200,80,' + a.toFixed(2) + ')';
+              }
+              bx.fillText(bit, c * fs, r * fs + fs);
+            }
+          }
+        });
+        bx.shadowBlur  = 0;
+        bx.shadowColor = 'transparent';
+      }
+      window.addEventListener('resize', function() { bc.width = window.innerWidth; bc.height = window.innerHeight; });
+
+      var zoomTimer  = null;
+      var animActive = false;
+      var animFrame  = null;
+
+      function animateBinary() {
+        if (!animActive) return;
+        drawBinary();
+        animFrame = requestAnimationFrame(animateBinary);
+      }
+
+      function resetBc() {
+        animActive = false;
+        if (animFrame)  { cancelAnimationFrame(animFrame); animFrame = null; }
+        if (zoomTimer)  { clearTimeout(zoomTimer); zoomTimer = null; }
+        bc.style.transition = 'none';
+        bc.style.transform  = 'scale(1)';
+        bc.style.opacity    = '0';
+        bc.style.display    = 'none';
+      }
+      resetBc();
+
+      function zoomIn(cb) {
+        resetBc();
+        bc.width  = window.innerWidth;
+        bc.height = window.innerHeight;
+        bc.style.display    = 'block';
+        bc.style.transition = 'none';
+        bc.style.transform  = 'scale(1)';
+        bc.style.opacity    = '1';
+        if (matrixCanvas) { matrixCanvas.style.transition = 'opacity 0.3s'; matrixCanvas.style.opacity = '0'; }
+
+        animActive = true;
+        animateBinary();
+
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            bc.style.transition = 'transform 3s cubic-bezier(0.2,0,0.8,1), opacity 0.7s ease 2.3s';
+            bc.style.transform  = 'scale(30)';
+            bc.style.opacity    = '0';
+            zoomTimer = setTimeout(function() {
+              zoomTimer = null;
+              animActive = false;
+              bc.style.display = 'none';
+              cb();
+            }, 3200);
+          });
+        });
+      }
+
+      function zoomOut() {
+        resetBc();
+        if (matrixCanvas) {
+          matrixCanvas.style.transition = 'opacity 0.6s';
+          matrixCanvas.style.opacity    = '1';
+        }
+      }
+
+      function setupFan(overlayId, triggerId, closeId, svgId, orbitR, useZoom) {
         var overlay  = document.getElementById(overlayId);
         var trigger  = document.getElementById(triggerId);
         var closeBtn = document.getElementById(closeId);
@@ -963,17 +1480,99 @@
           svg.appendChild(line);
         });
 
-        function open()  { overlay.removeAttribute('aria-hidden'); overlay.classList.add('open'); }
-        function close() { overlay.classList.remove('open'); overlay.setAttribute('aria-hidden', 'true'); }
+        function open() { overlay.removeAttribute('aria-hidden'); overlay.classList.add('open'); }
+        function close() { overlay.classList.remove('open'); overlay.setAttribute('aria-hidden', 'true'); if (useZoom) zoomOut(); }
 
-        if (trigger)  trigger.addEventListener('click', open);
+        if (trigger) {
+          trigger.addEventListener('click', function() {
+            if (useZoom) { zoomIn(open); } else { open(); }
+          });
+        }
         if (closeBtn) closeBtn.addEventListener('click', close);
         overlay.addEventListener('click', function(e) { if (e.target === overlay) close(); });
         document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close(); });
       }
 
-      setupFan('fan-overlay',      'fan-trigger',      'fan-close',      'fan-svg',      320);
-      setupFan('fan-overlay-book', 'fan-trigger-book', 'fan-close-book', 'fan-svg-book', 300);
+      setupFan('fan-overlay',      'fan-trigger',      'fan-close',      'fan-svg',      320, true);
+      setupFan('fan-overlay-book', 'fan-trigger-book', 'fan-close-book', 'fan-svg-book', 300, false);
+
+      // ── Book chapter reader ──────────────────────────────────────────
+      var BOOK_CHAPTERS = {};
+      try {
+        var chapEl = document.getElementById('book-chapters');
+        if (chapEl) BOOK_CHAPTERS = JSON.parse(chapEl.textContent);
+      } catch(e) {}
+
+      var bookReaderEl    = document.getElementById('book-reader');
+      var bookReaderTitle = document.getElementById('book-reader-title');
+      var bookReaderBody  = document.getElementById('book-reader-body');
+      var bookReaderClose = document.getElementById('book-reader-close');
+
+      function findChapterContent(label) {
+        if (BOOK_CHAPTERS[label] !== undefined) return BOOK_CHAPTERS[label];
+        var keys = Object.keys(BOOK_CHAPTERS);
+        for (var k = 0; k < keys.length; k++) {
+          if (keys[k].startsWith(label) || label.startsWith(keys[k])) return BOOK_CHAPTERS[keys[k]];
+        }
+        return null;
+      }
+
+      function openBookReader(chapterName) {
+        if (!bookReaderEl || !bookReaderTitle || !bookReaderBody) return;
+        var content = findChapterContent(chapterName);
+        bookReaderTitle.textContent = chapterName;
+        if (!content || content.length < 15) {
+          bookReaderBody.innerHTML = '<span class="book-reader-pending">(debe completarse)</span>';
+        } else {
+          var rendered = content
+            .split(/(──[^─]+──)/g)
+            .map(function(part) {
+              return /^──/.test(part)
+                ? '<span class="book-reader-section">' + part + '</span>'
+                : part;
+            })
+            .join('');
+          bookReaderBody.innerHTML = rendered;
+        }
+        bookReaderBody.scrollTop = 0;
+        bookReaderEl.style.display = 'flex';
+        bookReaderEl.removeAttribute('aria-hidden');
+      }
+
+      function closeBookReader() {
+        if (!bookReaderEl) return;
+        bookReaderEl.style.display = 'none';
+        bookReaderEl.setAttribute('aria-hidden', 'true');
+      }
+
+      if (bookReaderClose) bookReaderClose.addEventListener('click', function(e) { e.stopPropagation(); closeBookReader(); });
+      if (bookReaderEl) {
+        bookReaderEl.addEventListener('click', function(e) {
+          if (e.target === bookReaderEl) closeBookReader();
+        });
+      }
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && bookReaderEl && bookReaderEl.style.display === 'flex') closeBookReader();
+      });
+
+      // Use capture-phase delegation on the book overlay — most reliable approach
+      var bookFanOverlay = document.getElementById('fan-overlay-book');
+      if (bookFanOverlay) {
+        bookFanOverlay.addEventListener('click', function(e) {
+          var node = e.target;
+          // Walk up to find .fan-node in case click lands on child
+          while (node && node !== bookFanOverlay) {
+            if (node.classList && node.classList.contains('fan-node')) {
+              e.preventDefault();
+              e.stopPropagation();
+              var label = node.getAttribute('data-label');
+              if (label) openBookReader(label);
+              return;
+            }
+            node = node.parentNode;
+          }
+        }, true); // capture phase — fires before overlay close handler
+      }
     })();
   </script>
 </body>
